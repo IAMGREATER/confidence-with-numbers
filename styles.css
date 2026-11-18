@@ -58,6 +58,81 @@ html, body {
   z-index: 2;
 }
 
+/* Staggered Kinetic Entrances (Keynote / Web-Deck Motion) */
+.slide .eyebrow,
+.slide h1,
+.slide h2,
+.slide .lead,
+.slide .pill-row,
+.slide .visual-frame,
+.slide .app-window,
+.slide .myth-card,
+.slide .action-card {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.slide.active .eyebrow { opacity: 1; transform: translateY(0); transition-delay: 0.05s; }
+.slide.active h1,
+.slide.active h2 { opacity: 1; transform: translateY(0); transition-delay: 0.12s; }
+.slide.active .lead { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
+.slide.active .pill-row { opacity: 1; transform: translateY(0); transition-delay: 0.28s; }
+.slide.active .visual-frame { opacity: 1; transform: translateY(0); transition-delay: 0.22s; }
+.slide.active .app-window { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
+.slide.active .myth-card:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.08s; }
+.slide.active .myth-card:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.14s; }
+.slide.active .myth-card:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.20s; }
+.slide.active .myth-card:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.26s; }
+.slide.active .myth-card:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 0.32s; }
+.slide.active .myth-card:nth-child(6) { opacity: 1; transform: translateY(0); transition-delay: 0.38s; }
+.slide.active .action-card:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.12s; }
+.slide.active .action-card:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.22s; }
+.slide.active .action-card:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.32s; }
+
+/* Subtle Ambient Motion on Visuals & Live Badges */
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-7px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.16); }
+  50% { box-shadow: 0 0 0 9px rgba(16, 185, 129, 0.28); }
+}
+
+@keyframes kenBurnsSoft {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+.slide.active .visual-frame img {
+  animation: kenBurnsSoft 14s ease-in-out infinite alternate;
+}
+
+.pill-trial {
+  animation: pulseGlow 2.4s ease-in-out infinite;
+}
+
+/* Floating Wireframe Geometry */
+.wireframe-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.12;
+  z-index: 0;
+}
+.wireframe-bg svg {
+  position: absolute;
+  animation: floatSlow 18s ease-in-out infinite alternate;
+}
+@keyframes floatSlow {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(20px, -24px) rotate(14deg); }
+}
+
 /* Themes */
 .theme-editorial {
   background: var(--bg-editorial);
