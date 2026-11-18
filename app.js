@@ -139,39 +139,72 @@
     }
   });
 
-  // Slide 2: Live Confidence Thermometer
-  function addWordToZone(word, zone) {
+  // Slide 2: Live Interactive Word Cloud (grows when repeated, colour-coded by sentiment)
+  const wordCloudCanvas = document.getElementById('wordCloudCanvas');
+  const cloudTotalCount = document.getElementById('cloudTotalCount');
+  const cloudMap = new Map(); // key: lowercase word -> { label, zone, count }
+
+  function renderWordCloud() {
+    wordCloudCanvas.innerHTML = '';
+    if (cloudMap.size === 0) {
+      wordCloudCanvas.innerHTML = '<div class="wordcloud-empty">Click words on the left (or type your own) to build the live word cloud…</div>';
+      cloudTotalCount.textContent = '0 responses · Click a word to grow it';
+      return;
+    }
+
+    let total = 0;
+    const entries = Array.from(cloudMap.values());
+    entries.forEach((item) => { total += item.count; });
+
+    entries.forEach((item) => {
+      const btn = document.createElement('span');
+      btn.className = `cloud-word zone-${item.zone}`;
+      // Smoothly scale font-size from 1.35rem (count=1) up to 3.6rem (count>=6)
+      const sizeRem = Math.min(3.6, 1.35 + (item.count - 1) * 0.45);
+      btn.style.fontSize = `${sizeRem.toFixed(2)}rem`;
+      btn.title = 'Click to add another vote for this word';
+      btn.innerHTML = item.count > 1
+        ? `${item.label}<span class="cloud-count">×${item.count}</span>`
+        : item.label;
+      btn.addEventListener('click', () => addWordToCloud(item.label, item.zone));
+      wordCloudCanvas.appendChild(btn);
+    });
+
+    cloudTotalCount.textContent = `${total} response${total === 1 ? '' : 's'} · Click a word to grow it`;
+  }
+
+  function addWordToCloud(word, zone) {
     const clean = word.trim();
     if (!clean) return;
-    const target = document.getElementById(`zone-${zone}`);
-    if (!target) return;
-    const span = document.createElement('span');
-    span.className = 'dropped-word';
-    span.textContent = clean;
-    target.appendChild(span);
+    const key = clean.toLowerCase();
+    if (cloudMap.has(key)) {
+      cloudMap.get(key).count += 1;
+    } else {
+      cloudMap.set(key, { label: clean, zone, count: 1 });
+    }
+    renderWordCloud();
   }
 
   document.querySelectorAll('.emotion-chip').forEach((chip) => {
-    chip.addEventListener('click', () => addWordToZone(chip.dataset.word, chip.dataset.zone));
+    chip.addEventListener('click', () => addWordToCloud(chip.dataset.word, chip.dataset.zone));
   });
 
   const customInput = document.getElementById('customWordInput');
   const customZone = document.getElementById('customWordZone');
   document.getElementById('addWordBtn').addEventListener('click', () => {
-    addWordToZone(customInput.value, customZone.value);
+    addWordToCloud(customInput.value, customZone.value);
     customInput.value = '';
     customInput.focus();
   });
   customInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
-      addWordToZone(customInput.value, customZone.value);
+      addWordToCloud(customInput.value, customZone.value);
       customInput.value = '';
     }
   });
   document.getElementById('clearThermoBtn').addEventListener('click', () => {
-    ['high', 'mid', 'low'].forEach((z) => {
-      document.getElementById(`zone-${z}`).innerHTML = '';
-    });
+    cloudMap.clear();
+    renderWordCloud();
   });
 
   // Slide 4: Anxiety Visual Carousel Popup
