@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Confidence with Numbers &amp; Functional Skills — Oxford Health NHS</title>
-  <link rel="stylesheet" href="styles.css?v=2" />
+  <link rel="stylesheet" href="styles.css?v=3" />
 </head>
 <body>
   <div class="progress-bar" id="progressBar"></div>
@@ -69,17 +69,18 @@
             </div>
           </div>
 
-          <div class="wordcloud-board">
-            <div class="wordcloud-canvas" id="wordCloudCanvas">
-              <div class="wordcloud-empty">Click words on the left (or type your own) to build the live word cloud…</div>
+          <div class="thermo-board">
+            <div class="thermo-zone zone-high">
+              <div class="zone-label">Confident / Ready</div>
+              <div class="zone-tags" id="zone-high"></div>
             </div>
-            <div class="wordcloud-legend">
-              <div class="legend-dots">
-                <span class="legend-dot"><i style="background:#34d399;"></i>Positive</span>
-                <span class="legend-dot"><i style="background:#fbbf24;"></i>Mixed</span>
-                <span class="legend-dot"><i style="background:#fb7185;"></i>Anxious</span>
-              </div>
-              <span id="cloudTotalCount">0 responses · Click a word to grow it</span>
+            <div class="thermo-zone zone-mid">
+              <div class="zone-label">Mixed / Rusty</div>
+              <div class="zone-tags" id="zone-mid"></div>
+            </div>
+            <div class="thermo-zone zone-low">
+              <div class="zone-label">Anxious / Stressed</div>
+              <div class="zone-tags" id="zone-low"></div>
             </div>
           </div>
         </div>
@@ -583,6 +584,6 @@
     <div class="overview-grid" id="overviewGrid"></div>
   </div>
 
-  <script src="app.js?v=2"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>
