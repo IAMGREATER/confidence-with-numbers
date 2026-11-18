@@ -360,4 +360,77 @@
   });
 
   syncFromHash();
+
+  // Ambient Moving Background Canvas (drifting nodes, connecting lines & subtle numeracy symbols)
+  const bgCanvas = document.getElementById('bgCanvas');
+  if (bgCanvas) {
+    const ctx = bgCanvas.getContext('2d');
+    const symbols = ['+', '%', '÷', '=', '×', '○', '△'];
+    const particles = [];
+    const COUNT = 26;
+
+    function resizeBg() {
+      bgCanvas.width = window.innerWidth;
+      bgCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeBg);
+    resizeBg();
+
+    for (let i = 0; i < COUNT; i++) {
+      particles.push({
+        x: Math.random() * bgCanvas.width,
+        y: Math.random() * bgCanvas.height,
+        vx: (Math.random() - 0.5) * 0.45,
+        vy: -0.15 - Math.random() * 0.35,
+        size: 13 + Math.random() * 14,
+        sym: i % 2 === 0 ? symbols[i % symbols.length] : null,
+        r: 2.5 + Math.random() * 2.5,
+        alpha: 0.08 + Math.random() * 0.1
+      });
+    }
+
+    function drawBg() {
+      ctx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+      const activeSlide = slides[current];
+      const isDark = activeSlide && (activeSlide.classList.contains('theme-chalkboard') || activeSlide.classList.contains('theme-cinema'));
+      const baseRgb = isDark ? '148, 197, 255' : '0, 94, 184';
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.y < -30) { p.y = bgCanvas.height + 30; p.x = Math.random() * bgCanvas.width; }
+        if (p.x < -30) p.x = bgCanvas.width + 30;
+        if (p.x > bgCanvas.width + 30) p.x = -30;
+
+        // Subtle connecting lines between nearby particles
+        for (let j = i + 1; j < particles.length; j++) {
+          const q = particles[j];
+          const dx = p.x - q.x;
+          const dy = p.y - q.y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < 150) {
+            ctx.strokeStyle = `rgba(${baseRgb}, ${(1 - dist / 150) * 0.08})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.stroke();
+          }
+        }
+
+        ctx.fillStyle = `rgba(${baseRgb}, ${p.alpha})`;
+        if (p.sym) {
+          ctx.font = `700 ${p.size}px Inter, sans-serif`;
+          ctx.fillText(p.sym, p.x, p.y);
+        } else {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+      requestAnimationFrame(drawBg);
+    }
+    requestAnimationFrame(drawBg);
+  }
 })();

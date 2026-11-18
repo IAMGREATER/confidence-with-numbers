@@ -286,11 +286,48 @@ h2.slide-title {
 }
 
 .visual-frame {
+  position: relative;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: var(--shadow-lg);
   border: 1px solid rgba(15, 23, 42, 0.12);
   background: #fff;
+}
+
+.img-float-badge {
+  position: absolute;
+  z-index: 4;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  color: var(--ink-dark);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.18);
+  padding: 0.5rem 0.95rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 800;
+  animation: gentleFloat 4.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.img-float-badge.badge-dark {
+  background: rgba(15, 23, 42, 0.85);
+  color: #f8fafc;
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.img-float-badge.pos-tl { top: 14px; left: 14px; }
+.img-float-badge.pos-br { bottom: 14px; right: 14px; animation-delay: -2.1s; }
+.img-float-badge.pos-tr { top: 14px; right: 14px; animation-delay: -1.2s; }
+
+#bgCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 3;
 }
 
 .visual-frame img {
