@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Confidence with Numbers &amp; Functional Skills — Oxford Health NHS</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+
+  <main class="deck" id="deck">
+
+    <!-- SLIDE 1: HERO TITLE -->
+    <section class="slide theme-editorial active" data-title="01 · Confidence with Numbers">
+      <div class="slide-inner">
+        <div class="split-grid">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-line"></span>OXFORD HEALTH NHS · SKILLS FOR LIFE</div>
+            <h1 class="hero-title">Confidence with <span class="accent-coral">Numbers</span><br>&amp; Your <span class="accent-blue">Career Gateway</span></h1>
+            <p class="lead">
+              Exploring how we feel about maths, busting old school myths, and unlocking free 1-to-1 <strong>Functional Skills</strong> in Maths, English &amp; Digital.
+            </p>
+            <div class="pill-row">
+              <span class="pill pill-highlight">No Tests Today</span>
+              <span class="pill">Maths · English · Digital (Trust Trial)</span>
+              <span class="pill">Abdul (Subi) &amp; Taniya</span>
+            </div>
+            <p style="margin-top:2rem; font-family:var(--font-mono); font-size:0.95rem; color:var(--ink-muted);">
+              <strong>→</strong> Next · <strong>F</strong> Fullscreen · <strong>O</strong> Overview
+            </p>
+          </div>
+          <div class="visual-frame">
+            <img src="assets/images/hero-numeracy.jpg" alt="NHS healthcare staff learning together around a laptop and notebooks" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: LIVE THERMOMETER ICEBREAKER -->
+    <section class="slide theme-chalkboard" data-title="02 · How Do You Feel About Maths?">
+      <div class="slide-inner">
+        <div class="eyebrow"><span class="eyebrow-line"></span>ACT 01 · THE ICEBREAKER</div>
+        <h2 class="slide-title">How do you feel about <span class="accent-sky">maths?</span></h2>
+        <p class="lead">Imagine being asked to do a calculation out loud right now. Pick or type <strong>one word</strong> — let's plot the room.</p>
+
+        <div class="thermo-layout">
+          <div>
+            <p style="font-family:var(--font-mono); font-size:0.9rem; color:#cbd5e1; margin-bottom:0.75rem;">CLICK A WORD OR TYPE YOUR OWN:</p>
+            <div class="chip-grid" id="presetChips">
+              <button class="emotion-chip" data-word="Anxious" data-zone="low">Anxious</button>
+              <button class="emotion-chip" data-word="Panicked" data-zone="low">Panicked</button>
+              <button class="emotion-chip" data-word="Blank mind" data-zone="low">Blank mind</button>
+              <button class="emotion-chip" data-word="Rusty" data-zone="mid">Rusty</button>
+              <button class="emotion-chip" data-word="Cautious" data-zone="mid">Cautious</button>
+              <button class="emotion-chip" data-word="Depends!" data-zone="mid">Depends!</button>
+              <button class="emotion-chip" data-word="Curious" data-zone="high">Curious</button>
+              <button class="emotion-chip" data-word="Confident" data-zone="high">Confident</button>
+            </div>
+            <div class="word-input-row">
+              <input type="text" id="customWordInput" placeholder="Type any word from the room..." />
+              <select id="customWordZone">
+                <option value="low">Nervous / Low</option>
+                <option value="mid">Mixed / Mid</option>
+                <option value="high">Confident / High</option>
+              </select>
+              <button class="btn btn-sky" id="addWordBtn">Add</button>
+              <button class="btn btn-ghost" id="clearThermoBtn" style="color:#fff; border-color:rgba(255,255,255,0.3);">Reset</button>
+            </div>
+          </div>
+
+          <div class="thermo-board">
+            <div class="thermo-zone zone-high">
+              <div class="zone-label">Confident / Ready</div>
+              <div class="zone-tags" id="zone-high"></div>
+            </div>
+            <div class="thermo-zone zone-mid">
+              <div class="zone-label">Mixed / Rusty</div>
+              <div class="zone-tags" id="zone-mid"></div>
+            </div>
+            <div class="thermo-zone zone-low">
+              <div class="zone-label">Anxious / Stressed</div>
+              <div class="zone-tags" id="zone-low"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: VIDEO 1 (DIRECT LOCAL MP4) -->
+    <section class="slide theme-cinema" data-title="03 · Video: How I Feel About Maths">
+      <div class="slide-inner">
+        <div class="split-grid">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-line"></span>NATIONAL NUMERACY VIDEO 01</div>
+            <h2 class="slide-title">You are <span class="accent-sky">not alone</span></h2>
+            <p class="lead">Listen to how people across all walks of life describe that instant reaction to numbers — and where it really comes from.</p>
+            <div class="pill-row">
+              <span class="pill">Nurture, not nature</span>
+              <span class="pill">No "maths gene"</span>
+            </div>
+          </div>
+          <div class="video-box">
+            <video controls playsinline preload="metadata">
+              <source src="assets/videos/video1_feelings.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: MATHS ANXIETY -->
+    <section class="slide theme-editorial" data-title="04 · Understanding Maths Anxiety">
+      <div class="slide-inner">
+        <div class="eyebrow"><span class="eyebrow-line"></span>THE SCIENCE OF IT</div>
+        <h2 class="slide-title">What is <span class="accent-coral">Maths Anxiety?</span></h2>
+
+        <div class="split-grid" style="margin-top:1.5rem;">
+          <div class="visual-stack">
+            <div class="visual-frame" style="max-height:220px;">
+              <img src="assets/images/maths-anxiety.jpg" alt="Calm morning light over an open notebook, calculator, and cup of tea" style="max-height:220px;" />
+            </div>
+            <div class="app-window">
+              <div class="app-window-bar">
+                <div class="window-dots"><span></span><span></span><span></span></div>
+                <span>research_definition.txt</span>
+              </div>
+              <div class="app-window-body">
+                <blockquote style="font-size:1.38rem; font-weight:750; line-height:1.42; color:#0f172a; border-left:5px solid var(--coral); padding-left:1.2rem;">
+                  “The panic, helplessness, paralysis, and mental disorganisation that arises among some people when they are required to solve a mathematical problem.”
+                </blockquote>
+                <p style="margin-top:1rem; font-size:1.05rem; color:var(--ink-muted);">— Tobias &amp; Weissbrod (1980) · University of Cambridge research</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="anxiety-launchers">
+            <button class="launcher-card launcher-causes" id="openCausesBtn">
+              <span class="eyebrow" style="margin:0; color:var(--coral);">PART 01 · 4 VISUAL IDEAS</span>
+              <div class="launcher-title">
+                <span>Why It Happens</span>
+                <span class="accent-coral">Explore →</span>
+              </div>
+              <p class="launcher-sub">School pressure, timed tests, old labels, and lack of tailored support — click to view &amp; cycle through all 4 visuals.</p>
+            </button>
+
+            <button class="launcher-card launcher-tips" id="openTipsBtn">
+              <span class="eyebrow" style="margin:0; color:var(--emerald);">PART 02 · 4 VISUAL IDEAS</span>
+              <div class="launcher-title">
+                <span>How We Beat It</span>
+                <span class="accent-emerald">Explore →</span>
+              </div>
+              <p class="launcher-sub">Talking openly, challenging beliefs, dropping the clock, and taking small steps 1-to-1 — click to cycle through all 4 visuals.</p>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: VIDEOS 2 & 3 (DIRECT LOCAL MP4) -->
+    <section class="slide theme-cinema" data-title="05 · Essentials &amp; Mindset Videos">
+      <div class="slide-inner">
+        <div class="eyebrow"><span class="eyebrow-line"></span>NATIONAL NUMERACY VIDEOS 02 &amp; 03</div>
+        <h2 class="slide-title">Value, Belief &amp; <span class="accent-sky">Persistence</span></h2>
+        <div class="split-even" style="margin-top:1.5rem;">
+          <div>
+            <p style="font-family:var(--font-mono); font-size:1rem; color:#cbd5e1; margin-bottom:0.65rem; font-weight:700;">02 · THE ESSENTIALS OF NUMERACY</p>
+            <div class="video-box">
+              <video controls playsinline preload="metadata">
+                <source src="assets/videos/video2_essentials.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+          <div>
+            <p style="font-family:var(--font-mono); font-size:1rem; color:#cbd5e1; margin-bottom:0.65rem; font-weight:700;">03 · VALUE, BELIEF AND PERSISTENCE</p>
+            <div class="video-box">
+              <video controls playsinline preload="metadata">
+                <source src="assets/videos/video3_mindset.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: INTERACTIVE MYTH BUSTER (3-STEP SPOTLIGHT + FLIP) -->
+    <section class="slide theme-editorial" data-title="06 · The Myth Buster">
+      <div class="slide-inner">
+        <div class="eyebrow"><span class="eyebrow-line"></span>ACTIVITY · CLICK CARD TO ZOOM → CLICK AGAIN TO FLIP</div>
+        <h2 class="slide-title" style="margin-bottom:0.35rem;">The <span class="accent-coral">Myth</span> Buster</h2>
+
+        <div class="myth-grid">
+          <div class="myth-card"
+               data-num="01"
+               data-q="“Everybody uses maths every day whether they think about it or not.”"
+               data-badge="TRUE"
+               data-type="true"
+               data-a="From shift rotas, fluid balance charts, and time management to splitting bills and budgeting — you already use maths daily.">
+            <span class="myth-num">01</span>
+            <div class="myth-q">“Everybody uses maths every day whether they think about it or not.”</div>
+            <div class="tap-hint">Click to enlarge ↗</div>
+          </div>
+
+          <div class="myth-card"
+               data-num="02"
+               data-q="“Learning maths as an adult is just like going back to school.”"
+               data-badge="MYTH"
+               data-type="myth"
+               data-a="No scary classrooms, no timed tests in front of peers. With Skills for Life, it’s 1-to-1, practical, and tailored to how your brain works.">
+            <span class="myth-num">02</span>
+            <div class="myth-q">“Learning maths as an adult is just like going back to school.”</div>
+            <div class="tap-hint">Click to enlarge ↗</div>
+          </div>
+
+          <div class="myth-card"
+               data-num="03"
+               data-q="“Some people are maths people and others are not.”"
+               data-badge="MYTH"
+               data-type="myth"
+               data-a="There is no “maths gene”. Confidence comes from nurture, visual methods, and safe practice — not innate talent.">
+            <span class="myth-num">03</span>
+            <div class="myth-q">“Some people are maths people and others are not.”</div>
+            <div class="tap-hint">Click to enlarge ↗</div>
+          </div>
+
+          <div class="myth-card"
+               data-num="04"
+               data-q="“Many people feel anxious about maths.”"
+               data-badge="TRUE"
+               data-type="true"
+               data-a="Millions of adults — including experienced healthcare staff — feel a jolt of anxiety. Talking about it breaks the stigma.">
+            <span class="myth-num">04</span>
+            <div class="myth-q">“Many people feel anxious about maths.”</div>
+            <div class="tap-hint">Click to enlarge ↗</div>
+          </div>
+
+          <div class="myth-card"
+               data-num="05"
+               data-q="“You don’t need maths if you have a calculator.”"
+               data-badge="MYTH"
+               data-type="myth"
+               data-a="Calculators only do what you type! Estimation lets you spot a decimal error (like 250 ml vs 25 ml) before it causes harm.">
+            <span class="myth-num">05</span>
+            <div class="myth-q">“You don’t need maths if you have a calculator.”</div>
+            <div class="tap-hint">Click to enlarge ↗</div>
+          </div>
+
+          <div class="myth-card"
+               data-num="06"
+               data-q="“Everybody can improve their maths with effort.”"
+               data-badge="TRUE"
+               data-type="true"
+               data-a="With the right visual tools and 1-to-1 guidance, staff regularly go from “I can’t do maths” to passing Level 2.">
+            <span class="myth-num">06</span>
+            <div class="myth-q">“Everybody can improve their maths with effort.”</div>
+            <div class="tap-hint">Click to enlarge ↗</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: CAREER GATEWAY SELECTOR (WITH REAL NHS PHOTO) -->
+    <section class="slide theme-nhs" data-title="07 · Your Career Gateway">
+      <div class="slide-inner">
+        <div class="split-grid">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-line"></span>OXFORD HEALTH · SKILLS FOR LIFE</div>
+            <h2 class="slide-title">Unlock Your <span class="accent-blue">Next Step</span></h2>
+            <p class="lead">Functional Skills Level 2 is the <strong>GCSE Grade C / 4 equivalent</strong> — your gateway to apprenticeships and progression at Oxford Health.</p>
+
+            <div class="pathway-pills" id="pathwayPills">
+              <button class="pathway-btn active" data-role="na">Nursing Associate</button>
+              <button class="pathway-btn" data-role="hcsw">Senior HCSW</button>
+              <button class="pathway-btn" data-role="rn">Registered Nurse</button>
+              <button class="pathway-btn" data-role="admin">Admin &amp; Team Lead</button>
+            </div>
+
+            <div class="app-window">
+              <div class="app-window-bar">
+                <div class="window-dots"><span></span><span></span><span></span></div>
+                <span id="pathwayFile">pathway_nursing_associate.json</span>
+              </div>
+              <div class="app-window-body" id="pathwayBody">
+                <h3 style="font-size:1.65rem; margin-bottom:0.5rem; color:var(--nhs-blue);">Nursing Associate Apprenticeship</h3>
+                <p style="font-size:1.2rem; line-height:1.5; margin-bottom:1rem;">Requires <strong>Functional Skills Maths &amp; English Level 2</strong> (or GCSE). Don’t have your certificates or need a pass? We get you exam-ready 1-to-1.</p>
+                <div class="pill-row" style="margin-top:0;">
+                  <span class="pill">Free 1-to-1 Online Tuition</span>
+                  <span class="pill">Works Around Your Shifts</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="visual-frame">
+            <img id="pathwayImage" src="assets/images/nhs-care-numbers.jpg" alt="NHS healthcare staff collaborating over a digital tablet" style="transition: opacity 0.25s ease;" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8: FUNCTIONAL SKILLS MATHS (01 OF 03) -->
+    <section class="slide theme-editorial" data-title="08 · Functional Skills Maths">
+      <div class="slide-inner">
+        <div class="split-grid">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-line"></span>01 · SKILLS FOR LIFE SUITE · 01 OF 03</div>
+            <h2 class="slide-title">Functional Skills <span class="accent-blue">Maths</span></h2>
+            <p class="lead">Level 1 &amp; Level 2 qualifications taught visually — zero squinting, zero jargon, built around real healthcare &amp; everyday numbers.</p>
+            <div class="pill-row">
+              <span class="pill">GCSE Equivalent</span>
+              <span class="pill">1-to-1 Online</span>
+              <span class="pill">Dyslexia-Friendly</span>
+              <span class="pill">Free Exam Sittings</span>
+            </div>
+          </div>
+
+          <div class="visual-stack">
+            <div class="visual-frame" style="max-height:240px;">
+              <img src="assets/images/maths-visual-art.jpg" alt="Colourful visual fraction blocks and geometric shapes" style="max-height:240px;" />
+            </div>
+            <div class="app-window">
+              <div class="app-window-bar">
+                <div class="window-dots"><span></span><span></span><span></span></div>
+                <span>visual_maths_preview.app</span>
+              </div>
+              <div class="app-window-body">
+                <div class="toggle-bar" id="mathsToggle">
+                  <button class="toggle-btn active" data-mode="visual">Our Visual Way</button>
+                  <button class="toggle-btn" data-mode="school">Scary School Way</button>
+                </div>
+                <div id="maths-visual">
+                  <p style="font-weight:800; font-size:1.25rem; margin-bottom:0.35rem;">Find 75% of 80 ml:</p>
+                  <p style="font-size:1.05rem; color:var(--ink-muted);">Split into 4 equal quarters (20 ml each). Highlight 3!</p>
+                  <div class="bar-model">
+                    <div class="bar-cell highlighted">20 ml</div>
+                    <div class="bar-cell highlighted">20 ml</div>
+                    <div class="bar-cell highlighted">20 ml</div>
+                    <div class="bar-cell">20 ml</div>
+                  </div>
+                  <p style="font-weight:850; color:var(--nhs-blue); font-size:1.35rem;">20 + 20 + 20 = 60 ml ✓</p>
+                </div>
+                <div id="maths-school" style="display:none; font-family:var(--font-mono); color:#475569; padding:0.75rem 0;">
+                  <p style="font-size:1.15rem;">0.75 × 80 = (75/100) × 80 = (3/4) × 80 = 240 ÷ 4 = 60...</p>
+                  <p style="margin-top:0.8rem; color:var(--coral); font-family:var(--font-sans); font-weight:700; font-size:1.15rem;">No wonder people switched off at school! We make it visual.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 9: FUNCTIONAL SKILLS ENGLISH (02 OF 03) -->
+    <section class="slide theme-editorial" data-title="09 · Functional Skills English">
+      <div class="slide-inner">
+        <div class="split-grid">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-line"></span>02 · SKILLS FOR LIFE SUITE · 02 OF 03</div>
+            <h2 class="slide-title">Functional Skills <span class="accent-coral">English</span></h2>
+            <p class="lead">Reading, Writing, and Speaking &amp; Listening (Level 1 &amp; Level 2) — building confidence for clinical notes, reports, and career applications.</p>
+            <div class="pill-row">
+              <span class="pill">Reading &amp; Writing</span>
+              <span class="pill">Speaking &amp; Listening</span>
+              <span class="pill">SBAR &amp; Clinical Notes</span>
+              <span class="pill">1-to-1 Feedback</span>
+            </div>
+          </div>
+
+          <div class="visual-stack">
+            <div class="visual-frame" style="max-height:240px;">
+              <img src="assets/images/english-comms-art.jpg" alt="Fountain pen and clean clinical notebook cards" style="max-height:240px;" />
+            </div>
+            <div class="app-window">
+              <div class="app-window-bar">
+                <div class="window-dots"><span></span><span></span><span></span></div>
+                <span>clinical_writing_coach.app</span>
+              </div>
+              <div class="app-window-body">
+                <div class="toggle-bar" id="englishToggle">
+                  <button class="toggle-btn active" data-mode="after">After 1-to-1 Coaching</button>
+                  <button class="toggle-btn" data-mode="before">Rushed Draft</button>
+                </div>
+                <div id="eng-after" style="background:#f0fdf4; border-left:5px solid var(--emerald); padding:1.1rem; border-radius:10px;">
+                  <p style="font-weight:800; color:#065f46; font-size:1.15rem; margin-bottom:0.4rem;">Clear, Structured &amp; Exam-Ready:</p>
+                  <p style="font-size:1.15rem; line-height:1.5;">“Following the morning handover, the patient reported mild dizziness at 09:30. Observations were recorded and escalated to the duty nurse.”</p>
+                </div>
+                <div id="eng-before" style="display:none; background:#fff1f2; border-left:5px solid var(--coral); padding:1.1rem; border-radius:10px;">
+                  <p style="font-weight:800; color:#9f1239; font-size:1.15rem; margin-bottom:0.4rem;">Unclear &amp; Stressful:</p>
+                  <p style="font-size:1.15rem; line-height:1.5;">“pt felt dizzy after handover told nurse obs done”</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 10: DIGITAL FUNCTIONAL SKILLS (TRUST TRIAL NOW!) -->
+    <section class="slide theme-nhs" data-title="10 · Digital Functional Skills (Trial)">
+      <div class="slide-inner">
+        <div class="split-grid">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-line"></span>03 · SKILLS FOR LIFE SUITE · 03 OF 03</div>
+            <div style="margin-bottom:1rem;">
+              <span class="pill pill-trial">● BEING TRIALLED AT THE TRUST NOW</span>
+            </div>
+            <h2 class="slide-title">Digital Functional <span class="accent-emerald">Skills</span></h2>
+            <p class="lead">Entry 3 &amp; Level 1 digital confidence — practical, everyday NHS tech skills, currently being <strong>trialled right now at Oxford Health</strong>.</p>
+            <div class="pill-row">
+              <span class="pill">Live Trust Trial</span>
+              <span class="pill">Outlook &amp; Teams</span>
+              <span class="pill">Spreadsheets &amp; Forms</span>
+              <span class="pill">Online Safety</span>
+            </div>
+          </div>
+
+          <div class="visual-stack">
+            <div class="visual-frame" style="max-height:230px;">
+              <img src="assets/images/digital-nhs-art.jpg" alt="Modern digital workspace with laptop, video call, and spreadsheets" style="max-height:230px;" />
+            </div>
+            <div class="app-window">
+              <div class="app-window-bar">
+                <div class="window-dots"><span></span><span></span><span></span></div>
+                <span>dfs_trust_trial_modules.app</span>
+              </div>
+              <div class="app-window-body" style="display:grid; gap:0.75rem; font-size:1.08rem;">
+                <div><strong>1. Devices &amp; Info:</strong> Files, folders, NHS forms &amp; searching</div>
+                <div><strong>2. Creating &amp; Editing:</strong> Documents, spreadsheets &amp; rotas</div>
+                <div><strong>3. Communicating:</strong> Outlook emails, Teams &amp; online services</div>
+                <div><strong>4. Being Safe &amp; Responsible Online:</strong> Data protection, passwords &amp; cyber awareness</div>
+                <div style="padding:0.85rem 1rem; background:#ecfdf5; border-radius:10px; border:1.5px solid #a7f3d0; color:#065f46; margin-top:0.25rem;">
+                  <strong>Join the Trust Trial:</strong> Email <span style="font-size:1.18rem; font-weight:800;">functionalskills@oxfordhealth.nhs.uk</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 11: VIDEO 4 — NATIONAL NUMERACY CHALLENGE (DIRECT LOCAL MP4) -->
+    <section class="slide theme-cinema" data-title="11 · The 10-Minute Quick Check">
+      <div class="slide-inner">
+        <div class="split-grid">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-line"></span>NATIONAL NUMERACY VIDEO 04</div>
+            <h2 class="slide-title">The 10-Minute <span class="accent-sky">Quick Check</span></h2>
+            <p class="lead">Completely free, confidential, and mobile-friendly. 20 everyday questions — no pass or fail, just your personal starting point.</p>
+            <div class="pill-row">
+              <span class="pill">10 Minutes</span>
+              <span class="pill">Anonymous</span>
+              <span class="pill">Code: oxhealthcamp</span>
+            </div>
+          </div>
+          <div class="video-box">
+            <video controls playsinline preload="metadata">
+              <source src="assets/videos/video4_challenge.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 12: ACTION FINALE WITH BOTH QR CODES -->
+    <section class="slide theme-editorial" data-title="12 · Scan, Sign Up &amp; Feedback">
+      <div class="slide-inner">
+        <div class="eyebrow"><span class="eyebrow-line"></span>YOUR NEXT STEPS TODAY</div>
+        <h2 class="slide-title" style="margin-bottom:1.25rem;">Scan, Check &amp; <span class="accent-blue">Get Started</span></h2>
+
+        <div class="three-col">
+          <!-- Card 1: National Numeracy QR -->
+          <div class="action-card">
+            <div>
+              <span class="pill pill-highlight" style="margin-bottom:0.65rem; display:inline-block;">1 · QUICK CHECK</span>
+              <h3 style="font-size:1.5rem; margin-bottom:0.35rem;">National Numeracy Challenge</h3>
+            </div>
+            <div class="qr-center">
+              <img src="assets/nn-challenge-qr.png" alt="National Numeracy Challenge QR Code" />
+              <p style="font-size:0.95rem; font-weight:700; word-break:break-all;">nationalnumeracy.org.uk/challenge/oxhealthcamp</p>
+              <button class="copy-box" data-copy="oxhealthcamp">Code: oxhealthcamp 📋</button>
+            </div>
+          </div>
+
+          <!-- Card 2: Functional Skills Sign-Up -->
+          <div class="action-card">
+            <div>
+              <span class="pill pill-trial" style="margin-bottom:0.65rem; display:inline-block;">2 · 1-TO-1 TUTORING</span>
+              <h3 style="font-size:1.5rem; margin-bottom:0.5rem;">Functional Skills Sign-Up</h3>
+              <p style="font-size:1.08rem; line-height:1.5; color:var(--ink-muted);">
+                <strong>Maths · English · Digital (Trust Trial)</strong><br>
+                Free, shift-friendly 1-to-1 online tuition with <strong>Abdul (Subi) &amp; Taniya</strong>. Free exams at Unipart or home.
+              </p>
+            </div>
+            <div style="background:#f8fafc; padding:1.25rem; border-radius:14px; border:1.5px solid #cbd5e1; text-align:center;">
+              <p style="font-size:1rem; font-weight:700; color:var(--ink-muted); margin-bottom:0.6rem;">Main Admin Email (Click to Copy):</p>
+              <button class="copy-box" data-copy="functionalskills@oxfordhealth.nhs.uk" style="font-size:1.28rem; padding:0.85rem 1rem; width:100%; word-break:break-word;">
+                functionalskills@oxfordhealth.nhs.uk 📋
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 3: Session Feedback QR -->
+          <div class="action-card">
+            <div>
+              <span class="pill" style="margin-bottom:0.65rem; display:inline-block;">3 · YOUR FEEDBACK</span>
+              <h3 style="font-size:1.5rem; margin-bottom:0.35rem;">How Did We Do Today?</h3>
+            </div>
+            <div class="qr-center">
+              <img src="assets/nn-feedback-qr.png" alt="Session Feedback QR Code" />
+              <p style="font-size:0.95rem; font-weight:700; word-break:break-all;">
+                <a href="https://nn.typeform.com/to/fp2hTQAf" target="_blank" rel="noopener" style="color:var(--nhs-blue);">nn.typeform.com/to/fp2hTQAf ↗</a>
+              </p>
+              <span style="font-size:0.9rem; color:var(--ink-muted);">Scan to share quick feedback!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Anxiety Visual Carousel Popup -->
+  <div class="spotlight-backdrop" id="anxietyBackdrop">
+    <div class="carousel-modal" id="anxietyModal">
+      <div class="carousel-img-wrap">
+        <img id="axImg" src="" alt="" />
+      </div>
+      <div class="carousel-body">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; margin-bottom:0.6rem;">
+          <span class="eyebrow" id="axEyebrow" style="margin:0;">WHY IT HAPPENS · 1 OF 4</span>
+          <div style="display:flex; gap:0.5rem;">
+            <button class="toggle-btn active" id="axSwitchCauses">Why It Happens</button>
+            <button class="toggle-btn" id="axSwitchTips">How We Beat It</button>
+          </div>
+        </div>
+        <h3 id="axTitle" style="font-size:2.1rem; font-weight:850; margin-bottom:0.5rem;"></h3>
+        <p id="axDesc" style="font-size:1.3rem; line-height:1.45; color:var(--ink-muted);"></p>
+        <div class="carousel-footer">
+          <div style="display:flex; gap:0.65rem;">
+            <button class="btn btn-ghost" id="axPrevBtn">← Previous</button>
+            <button class="btn btn-primary" id="axNextBtn">Next →</button>
+          </div>
+          <button class="btn btn-ghost" id="axCloseBtn">Close (Esc)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Myth Buster 3-Step Spotlight Overlay -->
+  <div class="spotlight-backdrop" id="spotlightBackdrop">
+    <div class="spotlight-card" id="spotlightCard">
+      <div class="spotlight-inner">
+        <div class="spotlight-front">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span class="eyebrow" id="spNum" style="margin:0;">MYTH BUSTER · 01</span>
+            <span style="font-family:var(--font-mono); font-size:0.95rem; color:var(--nhs-blue); font-weight:700;">Click card to flip ↻</span>
+          </div>
+          <div class="sp-q" id="spQuestion"></div>
+          <div style="font-size:1rem; color:var(--ink-muted);">Discuss as a group, then click to reveal!</div>
+        </div>
+        <div class="spotlight-back">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span class="badge-truth" id="spBadge">TRUE</span>
+            <span style="font-family:var(--font-mono); font-size:0.95rem; color:#94a3b8;">Click anywhere to return</span>
+          </div>
+          <div class="sp-a" id="spAnswer"></div>
+          <div style="font-family:var(--font-mono); font-size:0.9rem; color:#94a3b8;">Oxford Health · National Numeracy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HUD Controls -->
+  <div class="hud">
+    <button id="prevBtn" title="Previous (←)">←</button>
+    <span id="slideCounter">01 / 12</span>
+    <button id="nextBtn" title="Next (→)">→</button>
+    <button id="overviewBtn" title="Overview (O)">⊞</button>
+    <button id="fullscreenBtn" title="Fullscreen (F)">⛶</button>
+  </div>
+
+  <!-- Slide Overview Modal -->
+  <div class="overview-overlay" id="overviewOverlay">
+    <div style="max-width:1260px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; color:#fff;">
+      <h2>Slide Overview</h2>
+      <button class="btn btn-sky" id="closeOverviewBtn">Close (Esc)</button>
+    </div>
+    <div class="overview-grid" id="overviewGrid"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
