@@ -433,4 +433,18 @@
     }
     requestAnimationFrame(drawBg);
   }
+
+  // Smooth Mouse-Reactive 3D Parallax on Active Slide Layers
+  document.addEventListener('mousemove', (e) => {
+    const activeSlide = slides[current];
+    if (!activeSlide) return;
+    const cx = (e.clientX / window.innerWidth - 0.5) * 2;
+    const cy = (e.clientY / window.innerHeight - 0.5) * 2;
+    activeSlide.querySelectorAll('.parallax-layer').forEach((el) => {
+      const depth = parseFloat(el.dataset.depth || '0.03');
+      const dx = (cx * depth * 320).toFixed(1);
+      const dy = (cy * depth * 320).toFixed(1);
+      el.style.transform = `translate3d(${dx}px, ${dy}px, 0)`;
+    });
+  });
 })();

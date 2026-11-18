@@ -321,6 +321,91 @@ h2.slide-title {
 .img-float-badge.pos-br { bottom: 14px; right: 14px; animation-delay: -2.1s; }
 .img-float-badge.pos-tr { top: 14px; right: 14px; animation-delay: -1.2s; }
 
+/* Spatial 3D Parallax & Giant Craft-Suite Watermarks */
+.parallax-layer {
+  will-change: transform;
+  transition: transform 0.12s ease-out;
+}
+
+.watermark-num {
+  position: absolute;
+  top: -0.18em;
+  left: -0.06em;
+  font-size: clamp(11rem, 22vw, 19rem);
+  font-weight: 900;
+  line-height: 0.85;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(15, 23, 42, 0.08);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* Full-Bleed Hero Composition (Slide 1) */
+.hero-fullbleed {
+  background:
+    linear-gradient(105deg, rgba(244, 241, 234, 0.96) 0%, rgba(244, 241, 234, 0.88) 48%, rgba(244, 241, 234, 0.35) 100%),
+    url('assets/images/hero-numeracy.jpg') center right/cover no-repeat !important;
+}
+
+.hero-collage {
+  position: relative;
+  min-height: 430px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.collage-card {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 28px 60px -12px rgba(15, 23, 42, 0.24);
+  color: var(--ink-dark);
+  width: 290px;
+}
+
+.collage-card-1 { top: 8%; right: 6%; transform: rotate(2.5deg); }
+.collage-card-2 { top: 38%; left: 4%; transform: rotate(-2.5deg); z-index: 3; }
+.collage-card-3 { bottom: 6%; right: 10%; transform: rotate(1.5deg); z-index: 4; border-color: rgba(5, 150, 105, 0.45); }
+
+/* Overlapping Craft-Suite Collage (Slides 4, 7, 8, 9, 10) */
+.overlap-stage {
+  position: relative;
+  min-height: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlap-back {
+  width: 88%;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 30px 70px -15px rgba(15, 23, 42, 0.28);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  transform: translate(6%, -12%) rotate(2deg);
+}
+
+.overlap-back img {
+  width: 100%;
+  height: 290px;
+  object-fit: cover;
+  display: block;
+}
+
+.overlap-front {
+  position: relative;
+  z-index: 5;
+  width: 88%;
+  margin-top: 150px;
+  margin-left: -8%;
+  transform: rotate(-1deg);
+}
+
 #bgCanvas {
   position: fixed;
   inset: 0;
