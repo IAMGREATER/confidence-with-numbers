@@ -278,6 +278,7 @@
   const pathways = {
     na: {
       file: 'pathway_nursing_associate.json',
+      tag: 'APPRENTICESHIP',
       img: 'assets/images/nhs-care-numbers.jpg',
       alt: 'NHS Nursing Associate colleagues collaborating over a tablet',
       title: 'Nursing Associate Apprenticeship',
@@ -285,13 +286,15 @@
     },
     hcsw: {
       file: 'pathway_senior_hcsw.json',
+      tag: 'APPRENTICESHIP OR BAND 3–4 PROGRESSION',
       img: 'assets/images/role-hcsw.jpg',
       alt: 'NHS Healthcare Support Worker with clipboard on a sunlit ward',
-      title: 'HCSW → Senior Healthcare Support Worker',
-      desc: 'Level 1 or Level 2 Maths &amp; English unlocks Band 3/4 progression and builds confidence with clinical observations, fluid charts, and handovers.'
+      title: 'Senior Healthcare Support Worker (HCSW)',
+      desc: 'Whether via the <strong>Level 3 Senior HCSW Apprenticeship</strong> or direct Band 3/4 progression, Level 1–2 Maths &amp; English builds confidence with observations, fluid charts, and handovers.'
     },
     rn: {
       file: 'pathway_registered_nurse.json',
+      tag: 'DEGREE APPRENTICESHIP / UNIVERSITY',
       img: 'assets/images/role-rn.jpg',
       alt: 'Registered Nurse reviewing digital chart at a nursing station',
       title: 'Registered Nurse Degree Apprenticeship',
@@ -299,10 +302,11 @@
     },
     admin: {
       file: 'pathway_admin_and_digital.json',
+      tag: 'CAREER PROGRESSION & APPRENTICESHIPS',
       img: 'assets/images/role-admin.jpg',
       alt: 'NHS admin and team lead working at a sunlit desk with a laptop',
       title: 'Admin, Estates &amp; Team Lead Progression',
-      desc: 'Combine <strong>Functional Skills Maths &amp; English</strong> with our <strong>Digital Functional Skills Trust Trial</strong> for spreadsheets, rotas, Outlook/Teams, and leadership.'
+      desc: 'Supports both <strong>Business Admin / Team Leader apprenticeships</strong> and internal promotion — combining Maths &amp; English with our <strong>Digital Functional Skills Trust Trial</strong>.'
     }
   };
 
@@ -318,6 +322,7 @@
         imgEl.alt = data.alt;
       }
       document.getElementById('pathwayBody').innerHTML = `
+        <span class="pill pill-highlight" style="margin-bottom:0.65rem; display:inline-block;">${data.tag}</span>
         <h3 style="font-size:1.65rem; margin-bottom:0.5rem; color:var(--nhs-blue);">${data.title}</h3>
         <p style="font-size:1.2rem; line-height:1.5; margin-bottom:1rem;">${data.desc}</p>
         <div class="pill-row" style="margin-top:0;">
