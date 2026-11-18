@@ -281,32 +281,28 @@
       tag: 'APPRENTICESHIP',
       img: 'assets/images/nhs-care-numbers.jpg',
       alt: 'NHS Nursing Associate colleagues collaborating over a tablet',
-      title: 'Nursing Associate Apprenticeship',
-      desc: 'Requires <strong>Functional Skills Maths &amp; English Level 2</strong> (or GCSE). Don’t have your certificates or need a pass? We get you exam-ready 1-to-1.'
+      desc: 'Requires <strong>Functional Skills Maths &amp; English Level 2</strong> (or GCSE). Free 1-to-1 coaching gets you exam-ready at Unipart or from home.'
     },
     hcsw: {
       file: 'pathway_senior_hcsw.json',
       tag: 'APPRENTICESHIP OR BAND 3–4 PROGRESSION',
       img: 'assets/images/role-hcsw.jpg',
       alt: 'NHS Healthcare Support Worker with clipboard on a sunlit ward',
-      title: 'Senior Healthcare Support Worker (HCSW)',
-      desc: 'Whether via the <strong>Level 3 Senior HCSW Apprenticeship</strong> or direct Band 3/4 progression, Level 1–2 Maths &amp; English builds confidence with observations, fluid charts, and handovers.'
+      desc: 'Via the <strong>Level 3 Senior HCSW Apprenticeship</strong> or direct Band 3/4 progression — Level 1–2 Maths &amp; English builds confidence with observations, fluid charts, and handovers.'
     },
     rn: {
       file: 'pathway_registered_nurse.json',
       tag: 'DEGREE APPRENTICESHIP / UNIVERSITY',
       img: 'assets/images/role-rn.jpg',
       alt: 'Registered Nurse reviewing digital chart at a nursing station',
-      title: 'Registered Nurse Degree Apprenticeship',
-      desc: 'Universities (like Oxford Brookes) require verified <strong>Level 2 Maths &amp; English</strong> (or accepted equivalents). Start early with 1-to-1 coaching so deadlines never catch you out.'
+      desc: 'Universities (like Oxford Brookes) require verified <strong>Level 2 Maths &amp; English</strong>. Start early with 1-to-1 coaching so application deadlines never catch you out.'
     },
     admin: {
       file: 'pathway_admin_and_digital.json',
       tag: 'CAREER PROGRESSION & APPRENTICESHIPS',
       img: 'assets/images/role-admin.jpg',
       alt: 'NHS admin and team lead working at a sunlit desk with a laptop',
-      title: 'Admin, Estates &amp; Team Lead Progression',
-      desc: 'Supports both <strong>Business Admin / Team Leader apprenticeships</strong> and internal promotion — combining Maths &amp; English with our <strong>Digital Functional Skills Trust Trial</strong>.'
+      desc: 'Supports <strong>Business Admin / Team Leader apprenticeships</strong> and internal promotion — combining Maths &amp; English with our <strong>Digital Functional Skills Trust Trial</strong>.'
     }
   };
 
@@ -322,13 +318,8 @@
         imgEl.alt = data.alt;
       }
       document.getElementById('pathwayBody').innerHTML = `
-        <span class="pill pill-highlight" style="margin-bottom:0.65rem; display:inline-block;">${data.tag}</span>
-        <h3 style="font-size:1.65rem; margin-bottom:0.5rem; color:var(--nhs-blue);">${data.title}</h3>
-        <p style="font-size:1.2rem; line-height:1.5; margin-bottom:1rem;">${data.desc}</p>
-        <div class="pill-row" style="margin-top:0;">
-          <span class="pill">Free 1-to-1 Online Tuition</span>
-          <span class="pill">Works Around Your Shifts</span>
-        </div>`;
+        <span class="pill pill-highlight" style="margin-bottom:0.55rem; display:inline-block; font-size:0.85rem; padding:0.35rem 0.8rem;">${data.tag}</span>
+        <p style="font-size:1.18rem; line-height:1.45; margin:0;">${data.desc}</p>`;
     });
   });
 

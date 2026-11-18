@@ -529,17 +529,23 @@ h2.slide-title {
 .bar-cell.highlighted { background: #005eb8; color: #ffffff; }
 
 /* Career Gateway Selector */
-.pathway-pills { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.25rem 0; }
+.pathway-pills {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+  margin: 1rem 0;
+}
 .pathway-btn {
   cursor: pointer;
-  padding: 0.75rem 1.25rem;
+  padding: 0.65rem 1rem;
   border-radius: 12px;
   border: 1.5px solid var(--card-border);
   background: #ffffff;
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   color: var(--ink-dark);
   transition: all 0.2s;
+  text-align: left;
 }
 .pathway-btn.active {
   background: var(--nhs-blue);
