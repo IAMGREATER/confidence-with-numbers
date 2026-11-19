@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Confidence with Numbers &amp; Functional Skills — Oxford Health NHS</title>
-  <link rel="stylesheet" href="styles.css?v=9" />
+  <link rel="stylesheet" href="styles.css?v=12" />
 </head>
 <body>
   <div class="progress-bar" id="progressBar"></div>
@@ -41,6 +41,43 @@
 
     <!-- SLIDE 2: LIVE THERMOMETER ICEBREAKER -->
     <section class="slide theme-chalkboard" data-title="02 · How Do You Feel About Maths?">
+      <!-- Wireframe Face: Scared -> Happy -> Chilled -> Rests Happy (Detailed) -->
+      <div class="wire-anim wire-tr wire-face-wrap" aria-hidden="true">
+        <svg viewBox="0 0 130 130" width="112" height="112">
+          <!-- Hair tuft & ears -->
+          <path d="M44 24 Q55 12 66 20 Q74 14 78 25" class="wire-stroke wire-thin" />
+          <path d="M23 58 Q16 58 18 68 Q20 74 26 72" class="wire-stroke wire-thin" />
+          <path d="M107 58 Q114 58 112 68 Q110 74 104 72" class="wire-stroke wire-thin" />
+          <circle cx="65" cy="64" r="41" class="wire-stroke" />
+          <g class="face-scared">
+            <circle cx="49" cy="54" r="7" class="wire-stroke" />
+            <circle cx="81" cy="54" r="7" class="wire-stroke" />
+            <circle cx="49" cy="54" r="2" class="wire-stroke" />
+            <circle cx="81" cy="54" r="2" class="wire-stroke" />
+            <path d="M39 41 Q49 33 57 41" class="wire-stroke" />
+            <path d="M73 41 Q81 33 91 41" class="wire-stroke" />
+            <ellipse cx="65" cy="82" rx="9" ry="12" class="wire-stroke" />
+            <path d="M112 34 Q118 44 112 48 Q106 44 112 34 Z" class="wire-stroke wire-accent-sky" />
+            <path d="M16 36 L22 42 M14 48 L20 48" class="wire-stroke wire-thin wire-accent-sky" />
+          </g>
+          <g class="face-chilled">
+            <path d="M36 49 L59 49 L56 61 Q47 63 39 60 Z" class="wire-stroke" />
+            <path d="M71 49 L94 49 L91 60 Q82 63 74 61 Z" class="wire-stroke" />
+            <line x1="59" y1="52" x2="71" y2="52" class="wire-stroke" />
+            <line x1="42" y1="53" x2="48" y2="57" class="wire-stroke wire-thin wire-accent-sky" />
+            <line x1="77" y1="53" x2="83" y2="57" class="wire-stroke wire-thin wire-accent-sky" />
+            <path d="M48 79 Q67 89 84 74" class="wire-stroke" />
+          </g>
+          <g class="face-happy">
+            <path d="M42 54 Q49 44 56 54" class="wire-stroke" />
+            <path d="M74 54 Q81 44 88 54" class="wire-stroke" />
+            <path d="M36 68 Q41 64 46 68" class="wire-stroke wire-thin wire-accent-coral" />
+            <path d="M84 68 Q89 64 94 68" class="wire-stroke wire-thin wire-accent-coral" />
+            <path d="M44 73 Q65 95 86 73" class="wire-stroke wire-accent-sky" />
+            <path d="M112 24 L114 30 L120 32 L114 34 L112 40 L110 34 L104 32 L110 30 Z" class="wire-stroke wire-thin wire-accent-sky" />
+          </g>
+        </svg>
+      </div>
       <div class="slide-inner">
         <div class="eyebrow"><span class="eyebrow-line"></span>ACT 01 · THE ICEBREAKER</div>
         <h2 class="slide-title">How do you feel about <span class="accent-sky">maths?</span></h2>
@@ -113,6 +150,56 @@
 
     <!-- SLIDE 4: MATHS ANXIETY -->
     <section class="slide theme-editorial" data-title="04 · Understanding Maths Anxiety">
+      <!-- Wireframe Stick Man Blowing Up Giant Calculator (Top-Right, Detailed) -->
+      <div class="wire-anim wire-tr wire-boom-wrap" aria-hidden="true">
+        <svg viewBox="0 0 280 130" width="265" height="122">
+          <!-- Ground line -->
+          <line x1="10" y1="112" x2="270" y2="112" class="wire-stroke wire-thin" stroke-dasharray="5 5" />
+          <!-- Giant Calculator -->
+          <g class="calc-body">
+            <rect x="18" y="20" width="66" height="90" rx="8" class="wire-stroke" />
+            <rect x="26" y="28" width="50" height="20" rx="3" class="wire-stroke" />
+            <text x="34" y="43" font-family="monospace" font-size="13" font-weight="bold" fill="currentColor">ERR?</text>
+            <rect x="26" y="55" width="11" height="11" rx="2" class="wire-stroke" />
+            <rect x="44" y="55" width="11" height="11" rx="2" class="wire-stroke" />
+            <rect x="62" y="55" width="11" height="11" rx="2" class="wire-stroke" />
+            <rect x="26" y="72" width="11" height="11" rx="2" class="wire-stroke" />
+            <rect x="44" y="72" width="11" height="11" rx="2" class="wire-stroke" />
+            <rect x="62" y="72" width="11" height="28" rx="2" class="wire-stroke" />
+            <rect x="26" y="89" width="29" height="11" rx="2" class="wire-stroke" />
+            <!-- Dynamite bundle & fuse -->
+            <rect x="84" y="74" width="22" height="9" rx="2" class="wire-stroke wire-accent-coral" />
+            <rect x="84" y="85" width="22" height="9" rx="2" class="wire-stroke wire-accent-coral" />
+            <line x1="92" y1="73" x2="92" y2="95" class="wire-stroke wire-thin" />
+            <line x1="98" y1="73" x2="98" y2="95" class="wire-stroke wire-thin" />
+          </g>
+          <!-- Detonator cable -->
+          <path d="M106 84 Q158 118 202 100" class="wire-stroke wire-thin" />
+          <circle cx="155" cy="103" r="3" class="wire-stroke wire-accent-coral fuse-spark" />
+          <!-- Plunger box -->
+          <rect x="202" y="90" width="24" height="20" rx="3" class="wire-stroke" />
+          <line x1="214" y1="90" x2="214" y2="75" class="wire-stroke plunger-rod" />
+          <line x1="205" y1="75" x2="223" y2="75" class="wire-stroke plunger-rod" />
+          <!-- Articulated Stick Man -->
+          <g class="boom-stickman">
+            <circle cx="240" cy="46" r="10" class="wire-stroke" />
+            <line x1="240" y1="56" x2="240" y2="85" class="wire-stroke" />
+            <path d="M240 64 L224 74" class="wire-stroke" />
+            <path d="M240 64 L254 74 L250 84" class="wire-stroke" />
+            <path d="M240 85 L229 110" class="wire-stroke" />
+            <path d="M240 85 L252 110" class="wire-stroke" />
+          </g>
+          <!-- Multi-ring Explosion & Debris -->
+          <g class="boom-burst">
+            <path d="M51 8 L58 28 L79 16 L65 39 L90 48 L66 60 L82 82 L56 68 L44 92 L38 66 L12 72 L30 50 L10 34 L34 34 Z" class="wire-stroke wire-accent-coral" />
+            <circle cx="51" cy="52" r="38" class="wire-stroke wire-thin wire-accent-coral" stroke-dasharray="6 6" />
+            <rect x="14" y="14" width="8" height="8" transform="rotate(22 18 18)" class="wire-stroke wire-thin" />
+            <rect x="86" y="18" width="8" height="8" transform="rotate(-18 90 22)" class="wire-stroke wire-thin" />
+            <line x1="26" y1="8" x2="14" y2="0" class="wire-stroke wire-accent-coral" />
+            <line x1="78" y1="10" x2="94" y2="2" class="wire-stroke wire-accent-coral" />
+          </g>
+        </svg>
+      </div>
       <div class="slide-inner">
         <div class="eyebrow"><span class="eyebrow-line"></span>THE SCIENCE OF IT</div>
         <h2 class="slide-title">What is <span class="accent-coral">Maths Anxiety?</span></h2>
@@ -300,10 +387,51 @@
           <span>Use ← / → to cycle roles · Click image or press Esc to return</span>
         </div>
       </div>
+      <!-- Detailed 4-step path walker pinned right at the bottom when expanded -->
+      <div class="pathway-stepper-wire" aria-hidden="true">
+        <svg viewBox="0 0 540 62" width="480" height="56">
+          <!-- Winding stepping-stone path -->
+          <path d="M35 48 Q105 38 175 48 T315 48 T465 48" class="wire-stroke wire-thin" stroke-dasharray="5 5" />
+          <!-- Milestone stepping stones & posts -->
+          <ellipse cx="40" cy="50" rx="14" ry="4" class="wire-stroke wire-thin step-dot active-step" data-step="0" />
+          <ellipse cx="180" cy="50" rx="14" ry="4" class="wire-stroke wire-thin step-dot" data-step="1" />
+          <ellipse cx="320" cy="50" rx="14" ry="4" class="wire-stroke wire-thin step-dot" data-step="2" />
+          <ellipse cx="460" cy="50" rx="14" ry="4" class="wire-stroke wire-thin step-dot" data-step="3" />
+          <!-- Goal banner / star at step 4 -->
+          <line x1="484" y1="50" x2="484" y2="14" class="wire-stroke" />
+          <path d="M484 14 L510 21 L484 28 Z" class="wire-stroke wire-accent-sky" />
+          <path d="M516 10 L518 15 L523 16 L519 19 L520 24 L516 21 L512 24 L513 19 L509 16 L514 15 Z" class="wire-stroke wire-thin wire-accent-sky" />
+          <!-- Detailed walking stick figure -->
+          <g id="pathwayWalker" class="pathway-walker">
+            <circle cx="40" cy="14" r="6" class="wire-stroke wire-accent-sky" />
+            <line x1="40" y1="20" x2="40" y2="35" class="wire-stroke wire-accent-sky" />
+            <path d="M40 24 L31 30 L34 33" class="wire-stroke wire-accent-sky" />
+            <path d="M40 24 L49 29 L53 25" class="wire-stroke wire-accent-sky" />
+            <path d="M40 35 L33 44 L31 49" class="wire-stroke wire-accent-sky" />
+            <path d="M40 35 L47 43 L49 49" class="wire-stroke wire-accent-sky" />
+          </g>
+        </svg>
+      </div>
     </section>
 
     <!-- SLIDE 8: FUNCTIONAL SKILLS MATHS (01 OF 03) -->
     <section class="slide theme-editorial" data-title="08 · Functional Skills Maths">
+      <!-- Top-left wireframe calculation being written: 1+2=3 -->
+      <div class="wire-anim wire-tl wire-calc-draw" aria-hidden="true">
+        <svg viewBox="0 0 210 64" width="195" height="60">
+          <!-- 1 -->
+          <path d="M24 20 L31 15 L31 45 M23 45 L39 45" class="wire-stroke draw-seq d1" />
+          <!-- + -->
+          <path d="M56 30 L74 30 M65 21 L65 39" class="wire-stroke draw-seq d2" />
+          <!-- 2 -->
+          <path d="M90 21 C90 12 110 12 110 22 C110 32 90 37 90 45 L112 45" class="wire-stroke draw-seq d3" />
+          <!-- = -->
+          <path d="M126 26 L144 26 M126 35 L144 35" class="wire-stroke draw-seq d4" />
+          <!-- 3 + check -->
+          <path d="M156 17 C174 14 176 28 162 29 C177 30 176 47 156 44" class="wire-stroke wire-accent-blue draw-seq d5" />
+          <path d="M180 34 L186 41 L197 23" class="wire-stroke wire-accent-emerald draw-seq d6" />
+        </svg>
+      </div>
       <div class="slide-inner">
         <div class="split-grid">
           <div style="position:relative;">
@@ -358,6 +486,28 @@
 
     <!-- SLIDE 9: FUNCTIONAL SKILLS ENGLISH (02 OF 03) -->
     <section class="slide theme-editorial" data-title="09 · Functional Skills English">
+      <!-- Top-left wireframe Quill in Ink Pot -> Writing -->
+      <div class="wire-anim wire-tl wire-quill-wrap" aria-hidden="true">
+        <svg viewBox="0 0 245 86" width="230" height="80">
+          <!-- Inkwell pot -->
+          <g class="inkpot">
+            <rect x="20" y="42" width="22" height="7" rx="2" class="wire-stroke" />
+            <path d="M18 49 L44 49 L48 72 Q31 76 14 72 Z" class="wire-stroke" />
+            <path d="M22 61 Q31 58 40 61" class="wire-stroke wire-thin wire-accent-blue" />
+          </g>
+          <!-- Flowing cursive script line -->
+          <path d="M62 70 Q76 62 90 70 T120 69 T152 70 T186 67" class="wire-stroke wire-thin quill-line" />
+          <!-- Feather Quill -->
+          <g class="quill-body">
+            <!-- Shaft & nib -->
+            <path d="M31 46 L35 36 L68 6" class="wire-stroke wire-accent-coral" />
+            <!-- Feather vane & barbs -->
+            <path d="M37 34 Q42 14 68 6 Q64 26 42 36 Z" class="wire-stroke wire-accent-coral" />
+            <line x1="45" y1="25" x2="53" y2="27" class="wire-stroke wire-thin wire-accent-coral" />
+            <line x1="51" y1="18" x2="59" y2="20" class="wire-stroke wire-thin wire-accent-coral" />
+          </g>
+        </svg>
+      </div>
       <div class="slide-inner">
         <div class="split-grid">
           <div style="position:relative;">
@@ -405,6 +555,46 @@
 
     <!-- SLIDE 10: DIGITAL FUNCTIONAL SKILLS (03 OF 03) -->
     <section class="slide theme-nhs" data-title="10 · Digital Functional Skills (Trial)">
+      <!-- Bottom wireframe Tin Man robot walking along (Detailed) -->
+      <div class="wire-anim wire-bl wire-robot-wrap" aria-hidden="true">
+        <svg viewBox="0 0 120 116" width="96" height="92" class="robot-walker">
+          <!-- Funnel hat & antenna -->
+          <polygon points="44,26 76,26 60,7" class="wire-stroke wire-accent-emerald" />
+          <line x1="60" y1="7" x2="60" y2="2" class="wire-stroke wire-thin" />
+          <!-- Head with visor & bolts -->
+          <rect x="44" y="26" width="32" height="21" rx="5" class="wire-stroke" />
+          <line x1="40" y1="36" x2="44" y2="36" class="wire-stroke" />
+          <line x1="76" y1="36" x2="80" y2="36" class="wire-stroke" />
+          <circle cx="53" cy="35" r="2.5" class="wire-stroke wire-accent-sky" />
+          <circle cx="67" cy="35" r="2.5" class="wire-stroke wire-accent-sky" />
+          <line x1="54" y1="42" x2="66" y2="42" class="wire-stroke wire-thin" />
+          <!-- Riveted chest & heart -->
+          <rect x="38" y="50" width="44" height="32" rx="6" class="wire-stroke" />
+          <circle cx="43" cy="55" r="1.3" class="wire-stroke wire-thin" />
+          <circle cx="77" cy="55" r="1.3" class="wire-stroke wire-thin" />
+          <circle cx="43" cy="77" r="1.3" class="wire-stroke wire-thin" />
+          <circle cx="77" cy="77" r="1.3" class="wire-stroke wire-thin" />
+          <path d="M60 60 C56 55 49 58 51 64 L60 72 L69 64 C71 58 64 55 60 60 Z" class="wire-stroke wire-accent-coral" />
+          <!-- Articulated Arms -->
+          <g class="robot-arm-l">
+            <circle cx="38" cy="56" r="3" class="wire-stroke" />
+            <path d="M35 58 L24 72 L28 77" class="wire-stroke" />
+          </g>
+          <g class="robot-arm-r">
+            <circle cx="82" cy="56" r="3" class="wire-stroke" />
+            <path d="M85 58 L96 72 L92 77" class="wire-stroke" />
+          </g>
+          <!-- Articulated Legs -->
+          <g class="robot-leg-l">
+            <line x1="50" y1="82" x2="46" y2="106" class="wire-stroke" />
+            <ellipse cx="44" cy="107" rx="6" ry="3" class="wire-stroke" />
+          </g>
+          <g class="robot-leg-r">
+            <line x1="70" y1="82" x2="74" y2="106" class="wire-stroke" />
+            <ellipse cx="76" cy="107" rx="6" ry="3" class="wire-stroke" />
+          </g>
+        </svg>
+      </div>
       <div class="slide-inner">
         <div class="split-grid">
           <div style="position:relative;">
@@ -473,6 +663,34 @@
 
     <!-- SLIDE 12: ACTION FINALE WITH BOTH QR CODES -->
     <section class="slide theme-editorial" data-title="12 · Scan, Sign Up &amp; Feedback">
+      <!-- Top-right wireframe stick person scanning with phone (Detailed) -->
+      <div class="wire-anim wire-tr wire-scan-wrap" aria-hidden="true">
+        <svg viewBox="0 0 185 118" width="172" height="110">
+          <!-- Floor -->
+          <line x1="14" y1="106" x2="174" y2="106" class="wire-stroke wire-thin" stroke-dasharray="4 4" />
+          <!-- Stick person -->
+          <circle cx="44" cy="28" r="10" class="wire-stroke" />
+          <path d="M36 22 Q44 14 52 22" class="wire-stroke wire-thin" />
+          <line x1="44" y1="38" x2="44" y2="76" class="wire-stroke" />
+          <path d="M44 48 L60 44 L72 39" class="wire-stroke" />
+          <path d="M44 48 L28 60 L34 72" class="wire-stroke" />
+          <path d="M44 76 L32 104 M44 76 L56 104" class="wire-stroke" />
+          <!-- Phone with screen -->
+          <rect x="72" y="25" width="16" height="28" rx="3" class="wire-stroke wire-accent-blue" />
+          <rect x="75" y="29" width="10" height="17" rx="1" class="wire-stroke wire-thin wire-accent-blue" />
+          <!-- Scanning beam & detailed QR -->
+          <path d="M92 34 Q106 39 92 44" class="wire-stroke wire-accent-blue scan-arc1" />
+          <path d="M98 28 Q118 39 98 50" class="wire-stroke wire-accent-blue scan-arc2" />
+          <rect x="124" y="22" width="38" height="38" rx="4" class="wire-stroke" />
+          <rect x="129" y="27" width="9" height="9" class="wire-stroke" />
+          <rect x="147" y="27" width="9" height="9" class="wire-stroke" />
+          <rect x="129" y="45" width="9" height="9" class="wire-stroke" />
+          <circle cx="151" cy="50" r="3" class="wire-stroke wire-thin" />
+          <line x1="120" y1="41" x2="166" y2="41" class="wire-stroke wire-accent-coral scan-laser" />
+          <!-- Checkmark pop -->
+          <path d="M136 78 L142 84 L154 70" class="wire-stroke wire-accent-emerald scan-check" />
+        </svg>
+      </div>
       <div class="slide-inner">
         <div class="eyebrow"><span class="eyebrow-line"></span>YOUR NEXT STEPS TODAY</div>
         <h2 class="slide-title" style="margin-bottom:1.25rem;">Scan, Check &amp; <span class="accent-blue">Get Started</span></h2>
@@ -599,6 +817,6 @@
     <div class="overview-grid" id="overviewGrid"></div>
   </div>
 
-  <script src="app.js?v=11"></script>
+  <script src="app.js?v=12"></script>
 </body>
 </html>

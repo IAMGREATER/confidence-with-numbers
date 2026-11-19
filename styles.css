@@ -1267,3 +1267,245 @@ h2.slide-title {
   margin: 0;
 }
 
+/* =========================================================
+   CORNER WIREFRAME ANIMATIONS
+   ========================================================= */
+.wire-anim {
+  position: absolute;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0.72;
+}
+.wire-anim svg {
+  overflow: visible;
+}
+
+.wire-tr { top: 1.35rem; right: 2.2rem; }
+.wire-tl { top: 1.25rem; left: 2.2rem; }
+.wire-br { bottom: 1.4rem; right: 2.2rem; }
+.wire-bl { bottom: 1.35rem; left: 2.4rem; }
+
+.wire-stroke {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.wire-thin { stroke-width: 1.7; opacity: 0.65; }
+.wire-accent-sky { stroke: #38bdf8; }
+.wire-accent-blue { stroke: #005eb8; }
+.wire-accent-coral { stroke: #e11d48; }
+.wire-accent-emerald { stroke: #059669; }
+
+.theme-chalkboard .wire-anim,
+.theme-cinema .wire-anim { color: #cbd5e1; }
+.theme-editorial .wire-anim,
+.theme-nhs .wire-anim { color: #475569; }
+
+/* Slide 2: Face Scared -> Happy -> Chilled -> Rests on Happy */
+.slide.active .face-scared {
+  opacity: 0;
+  animation: faceScared 6.5s ease forwards;
+}
+.slide.active .face-chilled {
+  opacity: 0;
+  animation: faceChilled 6.5s ease forwards;
+}
+.slide.active .face-happy {
+  opacity: 0;
+  animation: faceHappyRest 6.5s ease forwards;
+}
+
+@keyframes faceScared {
+  0%, 24% { opacity: 1; }
+  30%, 100% { opacity: 0; }
+}
+@keyframes faceChilled {
+  0%, 50% { opacity: 0; }
+  56%, 76% { opacity: 1; }
+  82%, 100% { opacity: 0; }
+}
+@keyframes faceHappyRest {
+  0%, 26% { opacity: 0; }
+  32%, 50% { opacity: 1; }
+  56%, 78% { opacity: 0; }
+  84%, 100% { opacity: 1; }
+}
+
+/* Slide 4: Stick Man Blowing Up Giant Calculator */
+.slide.active .boom-stickman {
+  animation: walkToPlunger 6s ease-in-out infinite;
+}
+.slide.active .plunger-rod {
+  animation: plungerPush 6s ease-in-out infinite;
+}
+.slide.active .calc-body {
+  transform-origin: 43px 60px;
+  animation: calcBoom 6s ease-in-out infinite;
+}
+.slide.active .boom-burst {
+  transform-origin: 43px 48px;
+  animation: burstPop 6s ease-in-out infinite;
+}
+
+@keyframes walkToPlunger {
+  0% { transform: translateX(-62px); }
+  40% { transform: translateX(0px); }
+  52% { transform: translateX(0px) translateY(5px); }
+  62%, 100% { transform: translateX(0px) translateY(0px); }
+}
+@keyframes plungerPush {
+  0%, 44% { transform: translateY(0); }
+  52%, 85% { transform: translateY(7px); }
+  100% { transform: translateY(0); }
+}
+@keyframes calcBoom {
+  0%, 52% { opacity: 1; transform: scale(1); }
+  58% { opacity: 0.25; transform: scale(1.12) rotate(-6deg); }
+  65%, 90% { opacity: 0.12; transform: scale(0.92); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes burstPop {
+  0%, 50% { opacity: 0; transform: scale(0.3); }
+  58% { opacity: 1; transform: scale(1.15); }
+  75%, 100% { opacity: 0; transform: scale(1.35); }
+}
+
+/* Slide 7: Expanded Role Step Walker (pinned at bottom) */
+.pathway-stepper-wire {
+  display: none;
+  position: fixed;
+  bottom: 0.55rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  pointer-events: none;
+  justify-content: center;
+}
+#slide7.pathway-expanded .pathway-stepper-wire {
+  display: flex;
+}
+.pathway-walker {
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.step-dot.active-step {
+  fill: #38bdf8;
+  stroke: #38bdf8;
+}
+
+/* Slide 8: 1 + 2 = 3 Self-Drawing Line Graphic */
+.draw-seq {
+  stroke-dasharray: 120;
+  stroke-dashoffset: 120;
+}
+.slide.active .d1 { animation: drawCalc 5.5s ease forwards infinite; }
+.slide.active .d2 { animation: drawCalc 5.5s ease 0.4s forwards infinite; }
+.slide.active .d3 { animation: drawCalc 5.5s ease 0.8s forwards infinite; }
+.slide.active .d4 { animation: drawCalc 5.5s ease 1.25s forwards infinite; }
+.slide.active .d5 { animation: drawCalc 5.5s ease 1.65s forwards infinite; }
+.slide.active .d6 { animation: drawCalc 5.5s ease 2.15s forwards infinite; }
+
+@keyframes drawCalc {
+  0% { stroke-dashoffset: 120; opacity: 1; }
+  35%, 85% { stroke-dashoffset: 0; opacity: 1; }
+  95%, 100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+/* Slide 9: Quill in Ink Pot -> Writing */
+.slide.active .quill-body {
+  transform-origin: 31px 46px;
+  animation: quillDipAndWrite 5.2s ease-in-out infinite;
+}
+.slide.active .quill-line {
+  stroke-dasharray: 150;
+  stroke-dashoffset: 150;
+  animation: quillLineDraw 5.2s ease-in-out infinite;
+}
+
+@keyframes quillDipAndWrite {
+  0%, 10% { transform: translate(0, 0) rotate(0deg); }
+  18% { transform: translate(0, 5px) rotate(-6deg); }
+  26% { transform: translate(31px, 24px) rotate(3deg); }
+  50% { transform: translate(93px, 24px) rotate(-3deg); }
+  75% { transform: translate(155px, 21px) rotate(3deg); }
+  88%, 100% { transform: translate(0, 0) rotate(0deg); }
+}
+@keyframes quillLineDraw {
+  0%, 26% { stroke-dashoffset: 150; }
+  75%, 88% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 150; }
+}
+
+/* Slide 10: Tin Man Robot Walking Along Bottom */
+.slide.active .wire-robot-wrap {
+  animation: robotGlide 11s linear infinite;
+}
+.slide.active .robot-walker {
+  animation: robotBob 0.7s ease-in-out infinite;
+}
+.slide.active .robot-leg-l {
+  transform-origin: 50px 82px;
+  animation: legSwing 0.7s ease-in-out infinite;
+}
+.slide.active .robot-leg-r {
+  transform-origin: 70px 82px;
+  animation: legSwing 0.7s ease-in-out infinite reverse;
+}
+.slide.active .robot-arm-l {
+  transform-origin: 38px 56px;
+  animation: legSwing 0.7s ease-in-out infinite reverse;
+}
+.slide.active .robot-arm-r {
+  transform-origin: 82px 56px;
+  animation: legSwing 0.7s ease-in-out infinite;
+}
+
+@keyframes robotGlide {
+  0% { transform: translateX(0); opacity: 0; }
+  8% { opacity: 0.75; }
+  90% { opacity: 0.75; }
+  100% { transform: translateX(46vw); opacity: 0; }
+}
+@keyframes robotBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+@keyframes legSwing {
+  0%, 100% { transform: rotate(-16deg); }
+  50% { transform: rotate(16deg); }
+}
+
+/* Slide 12: Stick Person Scanning With Phone */
+.slide.active .scan-arc1 {
+  animation: scanPulse 2.4s ease-in-out infinite;
+}
+.slide.active .scan-arc2 {
+  animation: scanPulse 2.4s ease-in-out 0.35s infinite;
+}
+.slide.active .scan-laser {
+  animation: laserSweep 2.4s ease-in-out infinite;
+}
+.slide.active .scan-check {
+  animation: scanCheckPop 2.4s ease-in-out infinite;
+}
+
+@keyframes scanPulse {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+@keyframes laserSweep {
+  0%, 100% { transform: translateY(-13px); opacity: 0.45; }
+  50% { transform: translateY(13px); opacity: 1; }
+}
+@keyframes scanCheckPop {
+  0%, 45% { opacity: 0; transform: scale(0.7); }
+  65%, 90% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; }
+}
+
+@media (max-width: 900px) {
+  .wire-anim { display: none; }
+}
+

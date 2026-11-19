@@ -680,6 +680,11 @@ It covers everyday NHS tech skills — from files and rotas to Outlook, Teams, a
     const data = pathways[role];
     const roleTitleEl = document.getElementById('pathwayActiveRoleTitle');
     if (roleTitleEl) roleTitleEl.textContent = data.title;
+    const walker = document.getElementById('pathwayWalker');
+    if (walker) walker.style.transform = `translateX(${currentPathwayIdx * 140}px)`;
+    document.querySelectorAll('.pathway-stepper-wire .step-dot').forEach((dot, i) => {
+      dot.classList.toggle('active-step', i <= currentPathwayIdx);
+    });
     document.getElementById('pathwayFile').textContent = data.file;
     const imgEl = document.getElementById('pathwayImage');
     if (imgEl) {
