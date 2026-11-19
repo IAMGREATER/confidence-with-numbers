@@ -182,6 +182,8 @@ It covers everyday NHS tech skills — from files and rotas to Outlook, Teams, a
     setTimeout(() => broadcastPresenterState(), 300);
   }
 
+  let slide4Stage = 'init';
+
   function showSlide(index, updateHash = true, revealAll = false) {
     pauseAllVideos();
     closeSpotlight();
@@ -189,6 +191,9 @@ It covers everyday NHS tech skills — from files and rotas to Outlook, Teams, a
     closePathwayExpanded(false);
     const prev = current;
     current = Math.max(0, Math.min(slides.length - 1, index));
+    if (current === 3) {
+      slide4Stage = revealAll ? 'how-done' : 'init';
+    }
     const dirClass = current > prev ? 'dir-forward' : current < prev ? 'dir-backward' : '';
     slides.forEach((s, i) => {
       s.classList.remove('dir-forward', 'dir-backward');
@@ -215,6 +220,43 @@ It covers everyday NHS tech skills — from files and rotas to Outlook, Teams, a
   }
 
   function advanceForward() {
+    if (anxietyBackdrop.classList.contains('open')) {
+      const len = anxietyData[axMode].length;
+      if (axIndex < len - 1) {
+        stepAnxiety(1);
+      } else {
+        const finishedMode = axMode;
+        closeAnxietyModal();
+        if (finishedMode === 'tips') {
+          showSlide(current + 1, true, false);
+        }
+      }
+      return;
+    }
+
+    if (current === 3) {
+      const causesBtn = document.getElementById('openCausesBtn');
+      const tipsBtn = document.getElementById('openTipsBtn');
+      if (slide4Stage === 'init' && causesBtn && !causesBtn.classList.contains('revealed')) {
+        causesBtn.classList.add('revealed');
+        slide4Stage = 'why-btn';
+        return;
+      }
+      if (slide4Stage === 'why-btn') {
+        openAnxietyModal('causes');
+        return;
+      }
+      if (slide4Stage === 'why-done' && tipsBtn && !tipsBtn.classList.contains('revealed')) {
+        tipsBtn.classList.add('revealed');
+        slide4Stage = 'how-btn';
+        return;
+      }
+      if (slide4Stage === 'how-btn') {
+        openAnxietyModal('tips');
+        return;
+      }
+    }
+
     const activeSlide = slides[current];
     const nextStep = activeSlide?.querySelector('.reveal-step:not(.revealed)');
     if (nextStep) {
@@ -225,6 +267,14 @@ It covers everyday NHS tech skills — from files and rotas to Outlook, Teams, a
   }
 
   function stepBackward() {
+    if (anxietyBackdrop.classList.contains('open')) {
+      if (axIndex > 0) {
+        stepAnxiety(-1);
+      } else {
+        closeAnxietyModal();
+      }
+      return;
+    }
     showSlide(current - 1, true, true);
   }
 
@@ -508,6 +558,9 @@ It covers everyday NHS tech skills — from files and rotas to Outlook, Teams, a
   function openAnxietyModal(mode) {
     axMode = mode;
     axIndex = 0;
+    if (current === 3) {
+      slide4Stage = mode === 'causes' ? 'why-open' : 'how-open';
+    }
     renderAnxietySlide();
     anxietyBackdrop.classList.add('open');
   }
@@ -516,7 +569,13 @@ It covers everyday NHS tech skills — from files and rotas to Outlook, Teams, a
     if (!anxietyBackdrop) return;
     const wasOpen = anxietyBackdrop.classList.contains('open');
     anxietyBackdrop.classList.remove('open');
-    if (wasOpen) broadcastPresenterState();
+    if (wasOpen) {
+      if (current === 3) {
+        const tipsRevealed = document.getElementById('openTipsBtn')?.classList.contains('revealed');
+        slide4Stage = axMode === 'tips' || tipsRevealed ? 'how-done' : 'why-done';
+      }
+      broadcastPresenterState();
+    }
   }
 
   function stepAnxiety(delta) {
