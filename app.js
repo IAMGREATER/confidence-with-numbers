@@ -183,6 +183,7 @@ It covers everyday NHS tech skills — from files and rotas to Outlook, Teams, a
   }
 
   let slide4Stage = 'init';
+  let slide7Stage = 'init';
 
   function showSlide(index, updateHash = true, revealAll = false) {
     pauseAllVideos();
@@ -193,6 +194,10 @@ It covers everyday NHS tech skills — from files and rotas to Outlook, Teams, a
     current = Math.max(0, Math.min(slides.length - 1, index));
     if (current === 3) {
       slide4Stage = revealAll ? 'how-done' : 'init';
+    }
+    if (current === 6) {
+      slide7Stage = revealAll ? 'done' : 'init';
+      selectPathway(pathwayOrder[0]);
     }
     const dirClass = current > prev ? 'dir-forward' : current < prev ? 'dir-backward' : '';
     slides.forEach((s, i) => {
@@ -257,6 +262,22 @@ It covers everyday NHS tech skills — from files and rotas to Outlook, Teams, a
       }
     }
 
+    if (slide7?.classList.contains('pathway-expanded')) {
+      if (currentPathwayIdx < pathwayOrder.length - 1) {
+        stepPathway(1);
+      } else {
+        closePathwayExpanded(false);
+        showSlide(current + 1, true, false);
+      }
+      return;
+    }
+
+    if (current === 6 && slide7Stage === 'init') {
+      slide7Stage = 'expanded';
+      flipTogglePathway(true);
+      return;
+    }
+
     const activeSlide = slides[current];
     const nextStep = activeSlide?.querySelector('.reveal-step:not(.revealed)');
     if (nextStep) {
@@ -272,6 +293,14 @@ It covers everyday NHS tech skills — from files and rotas to Outlook, Teams, a
         stepAnxiety(-1);
       } else {
         closeAnxietyModal();
+      }
+      return;
+    }
+    if (slide7?.classList.contains('pathway-expanded')) {
+      if (currentPathwayIdx > 0) {
+        stepPathway(-1);
+      } else {
+        closePathwayExpanded(true);
       }
       return;
     }
@@ -700,6 +729,7 @@ It covers everyday NHS tech skills — from files and rotas to Outlook, Teams, a
 
   function closePathwayExpanded(animate = true) {
     if (!slide7 || !slide7.classList.contains('pathway-expanded')) return;
+    slide7Stage = 'done';
     if (animate) {
       flipTogglePathway(false);
     } else {
