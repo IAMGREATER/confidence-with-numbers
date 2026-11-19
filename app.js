@@ -17,6 +17,7 @@
     pauseAllVideos();
     closeSpotlight();
     closeAnxietyModal();
+    closePathwayModal();
     current = Math.max(0, Math.min(slides.length - 1, index));
     slides.forEach((s, i) => s.classList.toggle('active', i === current));
     const num = String(current + 1).padStart(2, '0');
@@ -43,13 +44,26 @@
   document.getElementById('prevBtn').addEventListener('click', () => showSlide(current - 1));
   document.getElementById('nextBtn').addEventListener('click', () => showSlide(current + 1));
 
-  function toggleFullscreen() {
+  async function toggleFullscreen() {
     if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen?.();
+      try {
+        await document.documentElement.requestFullscreen?.();
+        if (navigator.keyboard && navigator.keyboard.lock) {
+          await navigator.keyboard.lock(['Escape']);
+        }
+      } catch {
+        // Ignore if keyboard lock is unavailable
+      }
     } else {
+      navigator.keyboard?.unlock?.();
       document.exitFullscreen?.();
     }
   }
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement) {
+      navigator.keyboard?.unlock?.();
+    }
+  });
   document.getElementById('fullscreenBtn').addEventListener('click', toggleFullscreen);
 
   // Overview modal
@@ -114,14 +128,34 @@
   document.addEventListener('keydown', (e) => {
     if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
     if (e.key === 'Escape') {
-      closeSpotlight();
-      closeAnxietyModal();
-      overviewOverlay.classList.remove('open');
+      const hasOpenOverlay =
+        spotlightBackdrop.classList.contains('open') ||
+        anxietyBackdrop.classList.contains('open') ||
+        pathwayBackdrop.classList.contains('open') ||
+        overviewOverlay.classList.contains('open');
+      if (hasOpenOverlay) {
+        e.preventDefault();
+        e.stopPropagation();
+        closeSpotlight();
+        closeAnxietyModal();
+        closePathwayModal();
+        overviewOverlay.classList.remove('open');
+        return;
+      }
+      if (document.fullscreenElement) {
+        navigator.keyboard?.unlock?.();
+        document.exitFullscreen?.();
+      }
       return;
     }
     if (anxietyBackdrop.classList.contains('open')) {
       if (e.key === 'ArrowRight') { e.preventDefault(); stepAnxiety(1); }
       if (e.key === 'ArrowLeft') { e.preventDefault(); stepAnxiety(-1); }
+      return;
+    }
+    if (pathwayBackdrop.classList.contains('open')) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); stepPathway(1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); stepPathway(-1); }
       return;
     }
     if (spotlightBackdrop.classList.contains('open')) return;
@@ -136,6 +170,8 @@
     } else if (e.key.toLowerCase() === 'o') {
       overviewOverlay.classList.toggle('open');
       if (overviewOverlay.classList.contains('open')) openOverview();
+    } else if (e.shiftKey && e.key.toLowerCase() === 'd') {
+      document.getElementById('downloadDeckBtn')?.click();
     }
   });
 
@@ -274,9 +310,11 @@
     if (e.target === anxietyBackdrop) closeAnxietyModal();
   });
 
-  // Slide 7: Career Gateway Selector
+  // Slide 7: Career Gateway Selector + Click-to-Expand Spotlight
+  const pathwayOrder = ['na', 'hcsw', 'rn', 'admin'];
   const pathways = {
     na: {
+      title: 'Nursing Associate',
       file: 'pathway_nursing_associate.json',
       tag: 'APPRENTICESHIP',
       img: 'assets/images/nhs-care-numbers.jpg',
@@ -284,6 +322,7 @@
       desc: 'Requires <strong>Functional Skills Maths &amp; English Level 2</strong> (or GCSE). Free 1-to-1 coaching gets you exam-ready at Unipart or from home.'
     },
     hcsw: {
+      title: 'Senior HCSW',
       file: 'pathway_senior_hcsw.json',
       tag: 'APPRENTICESHIP OR BAND 3–4 PROGRESSION',
       img: 'assets/images/role-hcsw.jpg',
@@ -291,6 +330,7 @@
       desc: 'Via the <strong>Level 3 Senior HCSW Apprenticeship</strong> or direct Band 3/4 progression — Level 1–2 Maths &amp; English builds confidence with observations, fluid charts, and handovers.'
     },
     rn: {
+      title: 'Registered Nurse',
       file: 'pathway_registered_nurse.json',
       tag: 'DEGREE APPRENTICESHIP / UNIVERSITY',
       img: 'assets/images/role-rn.jpg',
@@ -298,6 +338,7 @@
       desc: 'Universities (like Oxford Brookes) require verified <strong>Level 2 Maths &amp; English</strong>. Start early with 1-to-1 coaching so application deadlines never catch you out.'
     },
     admin: {
+      title: 'Admin & Team Lead',
       file: 'pathway_admin_and_digital.json',
       tag: 'CAREER PROGRESSION & APPRENTICESHIPS',
       img: 'assets/images/role-admin.jpg',
@@ -306,21 +347,68 @@
     }
   };
 
-  document.querySelectorAll('#pathwayPills .pathway-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('#pathwayPills .pathway-btn').forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-      const data = pathways[btn.dataset.role];
-      document.getElementById('pathwayFile').textContent = data.file;
-      const imgEl = document.getElementById('pathwayImage');
-      if (imgEl) {
-        imgEl.src = data.img;
-        imgEl.alt = data.alt;
-      }
-      document.getElementById('pathwayBody').innerHTML = `
-        <span class="pill pill-highlight" style="margin-bottom:0.55rem; display:inline-block; font-size:0.85rem; padding:0.35rem 0.8rem;">${data.tag}</span>
-        <p style="font-size:1.18rem; line-height:1.45; margin:0;">${data.desc}</p>`;
+  let currentPathwayIdx = 0;
+  const pathwayBackdrop = document.getElementById('pathwayBackdrop');
+  const pwModalEyebrow = document.getElementById('pwModalEyebrow');
+  const pwModalTag = document.getElementById('pwModalTag');
+  const pwModalTitle = document.getElementById('pwModalTitle');
+  const pwModalImg = document.getElementById('pwModalImg');
+  const pwModalDesc = document.getElementById('pwModalDesc');
+
+  function selectPathway(role) {
+    const idx = pathwayOrder.indexOf(role);
+    if (idx !== -1) currentPathwayIdx = idx;
+    document.querySelectorAll('#pathwayPills .pathway-btn').forEach((b) => {
+      b.classList.toggle('active', b.dataset.role === role);
     });
+    const data = pathways[role];
+    document.getElementById('pathwayFile').textContent = data.file;
+    const imgEl = document.getElementById('pathwayImage');
+    if (imgEl) {
+      imgEl.src = data.img;
+      imgEl.alt = data.alt;
+    }
+    document.getElementById('pathwayBody').innerHTML = `
+      <span class="pill pill-highlight" style="margin-bottom:0.55rem; display:inline-block; font-size:0.85rem; padding:0.35rem 0.8rem;">${data.tag}</span>
+      <p style="font-size:1.18rem; line-height:1.45; margin:0;">${data.desc}</p>`;
+  }
+
+  function renderPathwayModal() {
+    const role = pathwayOrder[currentPathwayIdx];
+    const data = pathways[role];
+    pwModalEyebrow.textContent = `CAREER GATEWAY · ${currentPathwayIdx + 1} OF ${pathwayOrder.length}`;
+    pwModalTag.textContent = data.tag;
+    pwModalTitle.textContent = data.title;
+    pwModalImg.src = data.img;
+    pwModalImg.alt = data.alt;
+    pwModalDesc.innerHTML = data.desc;
+  }
+
+  function openPathwayModal() {
+    renderPathwayModal();
+    pathwayBackdrop.classList.add('open');
+  }
+
+  function closePathwayModal() {
+    if (pathwayBackdrop) pathwayBackdrop.classList.remove('open');
+  }
+
+  function stepPathway(delta) {
+    currentPathwayIdx = (currentPathwayIdx + delta + pathwayOrder.length) % pathwayOrder.length;
+    selectPathway(pathwayOrder[currentPathwayIdx]);
+    renderPathwayModal();
+  }
+
+  document.querySelectorAll('#pathwayPills .pathway-btn').forEach((btn) => {
+    btn.addEventListener('click', () => selectPathway(btn.dataset.role));
+  });
+
+  document.getElementById('pathwayFrame')?.addEventListener('click', openPathwayModal);
+  document.getElementById('pwPrevBtn')?.addEventListener('click', () => stepPathway(-1));
+  document.getElementById('pwNextBtn')?.addEventListener('click', () => stepPathway(1));
+  document.getElementById('pwCloseBtn')?.addEventListener('click', closePathwayModal);
+  pathwayBackdrop?.addEventListener('click', (e) => {
+    if (e.target === pathwayBackdrop) closePathwayModal();
   });
 
   // Slide 8: Maths Visual vs School Toggle

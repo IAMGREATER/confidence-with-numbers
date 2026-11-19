@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Confidence with Numbers &amp; Functional Skills — Oxford Health NHS</title>
-  <link rel="stylesheet" href="styles.css?v=7" />
+  <link rel="stylesheet" href="styles.css?v=8" />
 </head>
 <body>
   <div class="progress-bar" id="progressBar"></div>
@@ -103,7 +103,7 @@
             </div>
           </div>
           <div class="video-box">
-            <video controls playsinline preload="metadata">
+            <video controls playsinline preload="metadata" poster="assets/images/video1-poster.jpg">
               <source src="assets/videos/video1_feelings.mp4" type="video/mp4" />
             </video>
           </div>
@@ -168,7 +168,7 @@
           <div>
             <p style="font-family:var(--font-mono); font-size:1rem; color:#cbd5e1; margin-bottom:0.65rem; font-weight:700;">02 · THE ESSENTIALS OF NUMERACY</p>
             <div class="video-box">
-              <video controls playsinline preload="metadata">
+              <video controls playsinline preload="metadata" poster="assets/images/video2-poster.jpg">
                 <source src="assets/videos/video2_essentials.mp4" type="video/mp4" />
               </video>
             </div>
@@ -176,7 +176,7 @@
           <div>
             <p style="font-family:var(--font-mono); font-size:1rem; color:#cbd5e1; margin-bottom:0.65rem; font-weight:700;">03 · VALUE, BELIEF AND PERSISTENCE</p>
             <div class="video-box">
-              <video controls playsinline preload="metadata">
+              <video controls playsinline preload="metadata" poster="assets/images/video3-poster.jpg">
                 <source src="assets/videos/video3_mindset.mp4" type="video/mp4" />
               </video>
             </div>
@@ -289,7 +289,7 @@
             </div>
           </div>
 
-          <div class="visual-frame" style="max-height:500px;">
+          <div class="visual-frame pathway-zoomable" id="pathwayFrame" title="Click to expand role details" style="max-height:500px; cursor:zoom-in;">
             <img id="pathwayImage" src="assets/images/nhs-care-numbers.jpg" alt="NHS healthcare staff collaborating over a digital tablet" style="max-height:500px; transition: opacity 0.25s ease;" />
             <div class="img-float-badge pos-tl">GCSE Grade C / 4 Equivalent</div>
             <div class="img-float-badge badge-dark pos-br">Unipart or Home Exams</div>
@@ -459,7 +459,7 @@
             </div>
           </div>
           <div class="video-box">
-            <video controls playsinline preload="metadata">
+            <video controls playsinline preload="metadata" poster="assets/images/video4-poster.jpg">
               <source src="assets/videos/video4_challenge.mp4" type="video/mp4" />
             </video>
           </div>
@@ -576,6 +576,30 @@
     </div>
   </div>
 
+  <!-- Career Pathway Spotlight Modal -->
+  <div class="spotlight-backdrop" id="pathwayBackdrop">
+    <div class="pathway-modal" id="pathwayModal">
+      <div class="pathway-modal-header">
+        <span class="eyebrow" id="pwModalEyebrow" style="margin:0; color:var(--nhs-blue);">CAREER GATEWAY · 1 OF 4</span>
+        <span class="pill pill-highlight" id="pwModalTag" style="font-size:0.85rem; padding:0.3rem 0.85rem;">APPRENTICESHIP</span>
+      </div>
+      <h3 id="pwModalTitle" class="pathway-modal-title">Nursing Associate</h3>
+      <div class="pathway-modal-img-wrap">
+        <img id="pwModalImg" src="" alt="" />
+      </div>
+      <div class="pathway-modal-body">
+        <p id="pwModalDesc" class="pathway-modal-desc"></p>
+        <div class="carousel-footer" style="margin-top:1.15rem;">
+          <div style="display:flex; gap:0.65rem;">
+            <button class="btn btn-ghost" id="pwPrevBtn">← Previous</button>
+            <button class="btn btn-primary" id="pwNextBtn">Next →</button>
+          </div>
+          <button class="btn btn-ghost" id="pwCloseBtn">Close (Esc)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- HUD Controls -->
   <div class="hud">
     <button id="prevBtn" title="Previous (←)">←</button>
@@ -583,6 +607,7 @@
     <button id="nextBtn" title="Next (→)">→</button>
     <button id="overviewBtn" title="Overview (O)">⊞</button>
     <button id="fullscreenBtn" title="Fullscreen (F)">⛶</button>
+    <a id="downloadDeckBtn" class="hud-hidden-download" href="https://github.com/IAMGREATER/confidence-with-numbers/archive/refs/heads/main.zip" download="confidence-with-numbers.zip" title="Download full offline presentation (.zip)" aria-label="Download full offline presentation">⬇</a>
   </div>
 
   <!-- Slide Overview Modal -->
@@ -594,6 +619,6 @@
     <div class="overview-grid" id="overviewGrid"></div>
   </div>
 
-  <script src="app.js?v=7"></script>
+  <script src="app.js?v=8"></script>
 </body>
 </html>
