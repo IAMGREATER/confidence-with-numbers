@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Presenter View · Confidence with Numbers</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0b1120;
+      color: #f8fafc;
+      height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      overflow: hidden;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1.25rem;
+      background: #0f172a;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+      gap: 1rem;
+    }
+    .brand {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #38bdf8;
+      letter-spacing: 0.06em;
+    }
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .btn {
+      cursor: pointer;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      padding: 0.45rem 0.9rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: background 0.2s ease;
+    }
+    .btn:hover { background: rgba(255, 255, 255, 0.18); }
+    .btn-primary { background: #005eb8; border-color: #005eb8; }
+    .btn-primary:hover { background: #0284c7; }
+    .timer-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.14);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 1.05rem;
+      font-weight: 800;
+      cursor: pointer;
+      user-select: none;
+    }
+    .timer-pill.paused {
+      background: rgba(245, 158, 11, 0.14);
+      border-color: rgba(245, 158, 11, 0.35);
+    }
+    .timer-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #22c55e;
+    }
+    .timer-pill.paused .timer-dot { background: #f59e0b; }
+
+    main {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 1.25rem;
+      padding: 1.25rem;
+      height: 100%;
+      overflow: hidden;
+    }
+    .preview-pane {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      min-height: 0;
+    }
+    .preview-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.85rem;
+      color: #94a3b8;
+      font-weight: 700;
+    }
+    .iframe-stage {
+      position: relative;
+      flex: 1;
+      background: #020617;
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    }
+    .iframe-stage iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1440px;
+      height: 900px;
+      border: none;
+      transform-origin: top left;
+      pointer-events: none;
+    }
+
+    .notes-pane {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      min-height: 0;
+    }
+    .card {
+      background: #0f172a;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 16px;
+      padding: 1.25rem;
+    }
+    .notes-card {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      overflow-y: auto;
+    }
+    .card-eyebrow {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: #38bdf8;
+      letter-spacing: 0.06em;
+    }
+    .notes-text {
+      font-size: 1.12rem;
+      line-height: 1.6;
+      color: #e2e8f0;
+      white-space: pre-line;
+    }
+    .next-slide-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #cbd5e1;
+      margin-top: 0.35rem;
+    }
+    .pair-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.8);
+      backdrop-filter: blur(8px);
+      display: none;
+      place-items: center;
+      z-index: 90;
+      padding: 1.5rem;
+    }
+    .pair-backdrop.open { display: grid; }
+    .pair-modal {
+      background: #0f172a;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 20px;
+      padding: 1.75rem;
+      max-width: 380px;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+    .pair-modal img {
+      width: 220px;
+      height: 220px;
+      background: #fff;
+      padding: 10px;
+      border-radius: 14px;
+    }
+    @media (max-width: 900px) {
+      header { flex-wrap: wrap; padding: 0.65rem 1rem; }
+      main { grid-template-columns: 1fr; grid-template-rows: 40% 1fr; padding: 0.85rem; gap: 0.85rem; }
+      .brand { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">PRESENTER VIEW · PRIVATE TO YOUR SCREEN</div>
+    <div class="controls">
+      <button class="btn" id="pairBtn" title="Show QR code to open on your tablet">📱 Pair Tablet</button>
+      <div class="timer-pill" id="timerPill" title="Click to pause/resume · Double-click to reset">
+        <span class="timer-dot"></span>
+        <span id="timerText">00:00</span>
+      </div>
+      <button class="btn" id="pvPrevBtn">← Prev</button>
+      <span id="pvCounter" style="font-family:ui-monospace,monospace;font-weight:800;">01 / 12</span>
+      <button class="btn btn-primary" id="pvNextBtn">Next →</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="preview-pane">
+      <div class="preview-label">
+        <span id="pvSlideTitle">01 · Confidence with Numbers</span>
+        <span>LIVE SLIDE MIRROR</span>
+      </div>
+      <div class="iframe-stage" id="iframeStage">
+        <iframe id="mirrorFrame" src="index.html?mirror=1#1"></iframe>
+      </div>
+    </section>
+
+    <aside class="notes-pane">
+      <div class="card notes-card">
+        <div class="card-eyebrow">SPEAKER CUES</div>
+        <p class="notes-text" id="pvNotes">Loading notes...</p>
+      </div>
+      <div class="card">
+        <div class="card-eyebrow">UP NEXT</div>
+        <div class="next-slide-title" id="pvNextTitle">02 · How Do You Feel About Maths?</div>
+      </div>
+    </aside>
+  </main>
+
+  <div class="pair-backdrop" id="pairBackdrop">
+    <div class="pair-modal">
+      <div class="card-eyebrow">SCAN WITH YOUR TABLET</div>
+      <img id="pairQrImg" src="" alt="Tablet Presenter View QR Code" />
+      <p style="font-size:0.92rem; color:#cbd5e1; line-height:1.45;">
+        Scan to open live notes, timer &amp; remote Next/Prev on your tablet (works over HTTPS even on restrictive Wi-Fi).
+      </p>
+      <p id="pairRoomLabel" style="font-family:ui-monospace,monospace; font-size:0.78rem; color:#38bdf8; word-break:break-all;"></p>
+      <button class="btn" id="pairCloseBtn">Close</button>
+    </div>
+  </div>
+
+  <script>
+    const channel = typeof BroadcastChannel !== 'undefined' ? new BroadcastChannel('nn_presenter_sync') : null;
+    const mirrorFrame = document.getElementById('mirrorFrame');
+    const iframeStage = document.getElementById('iframeStage');
+    const pvCounter = document.getElementById('pvCounter');
+    const pvSlideTitle = document.getElementById('pvSlideTitle');
+    const pvNotes = document.getElementById('pvNotes');
+    const pvNextTitle = document.getElementById('pvNextTitle');
+
+    function fitMirror() {
+      const rect = iframeStage.getBoundingClientRect();
+      const scale = Math.min(rect.width / 1440, rect.height / 900);
+      mirrorFrame.style.transform = `scale(${scale})`;
+      mirrorFrame.style.left = `${(rect.width - 1440 * scale) / 2}px`;
+      mirrorFrame.style.top = `${(rect.height - 900 * scale) / 2}px`;
+    }
+    window.addEventListener('resize', fitMirror);
+    fitMirror();
+
+    let lastState = null;
+    function syncMirrorIframe(slideIdx) {
+      try {
+        mirrorFrame.contentWindow?.postMessage({ type: 'mirror_slide', slide: slideIdx }, '*');
+      } catch {}
+    }
+
+    mirrorFrame.addEventListener('load', () => {
+      if (lastState) syncMirrorIframe(lastState.slide);
+    });
+
+    function applyState(state) {
+      if (!state || typeof state.slide !== 'number') return;
+      lastState = state;
+      const num = String(state.slide + 1).padStart(2, '0');
+      const total = String(state.total || 12).padStart(2, '0');
+      pvCounter.textContent = `${num} / ${total}`;
+      pvSlideTitle.textContent = state.title || `Slide ${num}`;
+      pvNotes.textContent = state.note || '';
+      pvNextTitle.textContent = state.nextTitle || 'End of presentation';
+      syncMirrorIframe(state.slide);
+    }
+
+    if (channel) {
+      channel.onmessage = (e) => {
+        if (e.data?.type === 'state') applyState(e.data);
+      };
+      channel.postMessage({ type: 'request_state' });
+    }
+
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'nn_presenter_state' && e.newValue) {
+        try { applyState(JSON.parse(e.newValue)); } catch {}
+      }
+    });
+
+    try {
+      const saved = localStorage.getItem('nn_presenter_state');
+      if (saved) applyState(JSON.parse(saved));
+    } catch {}
+
+    const roomId = new URLSearchParams(location.search).get('room') || '';
+
+    function sendCmd(cmd) {
+      if (channel) channel.postMessage({ type: 'cmd', cmd });
+      if (roomId) {
+        fetch(`https://ntfy.sh/${encodeURIComponent(roomId)}`, {
+          method: 'POST',
+          body: JSON.stringify({ type: 'cmd', cmd })
+        }).catch(() => {});
+      }
+    }
+
+    if (roomId) {
+      try {
+        const es = new EventSource(`https://ntfy.sh/${encodeURIComponent(roomId)}/sse`);
+        es.onmessage = (ev) => {
+          try {
+            const outer = JSON.parse(ev.data);
+            if (outer.event !== 'message' || !outer.message) return;
+            const msg = JSON.parse(outer.message);
+            if (msg.type === 'state') applyState(msg);
+          } catch {}
+        };
+        setTimeout(() => {
+          fetch(`https://ntfy.sh/${encodeURIComponent(roomId)}`, {
+            method: 'POST',
+            body: JSON.stringify({ type: 'request_state' })
+          }).catch(() => {});
+        }, 250);
+      } catch {}
+    }
+
+    const pairBackdrop = document.getElementById('pairBackdrop');
+    const pairQrImg = document.getElementById('pairQrImg');
+    const pairRoomLabel = document.getElementById('pairRoomLabel');
+    document.getElementById('pairBtn').addEventListener('click', () => {
+      const shareUrl = location.href;
+      pairQrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(shareUrl)}`;
+      pairRoomLabel.textContent = shareUrl;
+      pairBackdrop.classList.add('open');
+    });
+    document.getElementById('pairCloseBtn').addEventListener('click', () => pairBackdrop.classList.remove('open'));
+    pairBackdrop.addEventListener('click', (e) => {
+      if (e.target === pairBackdrop) pairBackdrop.classList.remove('open');
+    });
+
+    document.getElementById('pvPrevBtn').addEventListener('click', () => sendCmd('prev'));
+    document.getElementById('pvNextBtn').addEventListener('click', () => sendCmd('next'));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); sendCmd('next'); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); sendCmd('prev'); }
+    });
+
+    // Talk Timer
+    const timerPill = document.getElementById('timerPill');
+    const timerText = document.getElementById('timerText');
+    let sec = 0;
+    let running = true;
+    let interval = setInterval(() => {
+      if (!running) return;
+      sec += 1;
+      const m = String(Math.floor(sec / 60)).padStart(2, '0');
+      const s = String(sec % 60).padStart(2, '0');
+      timerText.textContent = `${m}:${s}`;
+    }, 1000);
+
+    timerPill.addEventListener('click', () => {
+      running = !running;
+      timerPill.classList.toggle('paused', !running);
+    });
+    timerPill.addEventListener('dblclick', () => {
+      sec = 0;
+      timerText.textContent = '00:00';
+    });
+  </script>
+</body>
+</html>

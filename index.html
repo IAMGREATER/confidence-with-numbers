@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Confidence with Numbers &amp; Functional Skills — Oxford Health NHS</title>
-  <link rel="stylesheet" href="styles.css?v=8" />
+  <link rel="stylesheet" href="styles.css?v=9" />
 </head>
 <body>
   <div class="progress-bar" id="progressBar"></div>
@@ -137,7 +137,7 @@
           </div>
 
           <div class="anxiety-launchers">
-            <button class="launcher-card launcher-causes" id="openCausesBtn">
+            <button class="launcher-card launcher-causes reveal-step" id="openCausesBtn">
               <span class="eyebrow" style="margin:0; color:var(--coral);">PART 01 · 4 VISUAL IDEAS</span>
               <div class="launcher-title">
                 <span>Why It Happens</span>
@@ -146,7 +146,7 @@
               <p class="launcher-sub">School pressure, timed tests, old labels, and lack of tailored support — click to view &amp; cycle through all 4 visuals.</p>
             </button>
 
-            <button class="launcher-card launcher-tips" id="openTipsBtn">
+            <button class="launcher-card launcher-tips reveal-step" id="openTipsBtn">
               <span class="eyebrow" style="margin:0; color:var(--emerald);">PART 02 · 4 VISUAL IDEAS</span>
               <div class="launcher-title">
                 <span>How We Beat It</span>
@@ -262,13 +262,14 @@
     </section>
 
     <!-- SLIDE 7: CAREER GATEWAY SELECTOR (WITH REAL NHS PHOTO) -->
-    <section class="slide theme-nhs" data-title="07 · Your Career Gateway">
+    <section class="slide theme-nhs" id="slide7" data-title="07 · Your Career Gateway">
       <div class="slide-inner">
-        <div class="split-grid">
-          <div>
+        <div class="pathway-layout" id="pathwayLayout">
+          <div class="pathway-header">
             <div class="eyebrow" style="margin-bottom:0.5rem;"><span class="eyebrow-line"></span>OXFORD HEALTH · SKILLS FOR LIFE</div>
             <h2 class="slide-title" style="margin-bottom:0.65rem;">Unlock Your <span class="accent-blue">Next Step</span></h2>
-            <p class="lead" style="font-size:1.25rem;">Level 2 Functional Skills = <strong>GCSE Grade C / 4 equivalent</strong>, with free 1-to-1 online tuition around your shifts.</p>
+            <h2 class="pathway-active-role-title" id="pathwayActiveRoleTitle">Nursing Associate</h2>
+            <p class="lead pathway-lead" style="font-size:1.25rem;">Level 2 Functional Skills = <strong>GCSE Grade C / 4 equivalent</strong>, with free 1-to-1 online tuition around your shifts.</p>
 
             <div class="pathway-pills" id="pathwayPills">
               <button class="pathway-btn active" data-role="na">Nursing Associate</button>
@@ -276,24 +277,27 @@
               <button class="pathway-btn" data-role="rn">Registered Nurse</button>
               <button class="pathway-btn" data-role="admin">Admin &amp; Team Lead</button>
             </div>
+          </div>
 
-            <div class="app-window">
-              <div class="app-window-bar">
-                <div class="window-dots"><span></span><span></span><span></span></div>
-                <span id="pathwayFile">pathway_nursing_associate.json</span>
-              </div>
-              <div class="app-window-body" id="pathwayBody" style="padding:1.25rem 1.4rem;">
-                <span class="pill pill-highlight" style="margin-bottom:0.55rem; display:inline-block; font-size:0.85rem; padding:0.35rem 0.8rem;">APPRENTICESHIP</span>
-                <p style="font-size:1.18rem; line-height:1.45; margin:0;">Requires <strong>Functional Skills Maths &amp; English Level 2</strong> (or GCSE). Free 1-to-1 coaching gets you exam-ready at Unipart or from home.</p>
-              </div>
+          <div class="app-window pathway-card" id="pathwayCard">
+            <div class="app-window-bar">
+              <div class="window-dots"><span></span><span></span><span></span></div>
+              <span id="pathwayFile">pathway_nursing_associate.json</span>
+            </div>
+            <div class="app-window-body" id="pathwayBody" style="padding:1.25rem 1.4rem;">
+              <span class="pill pill-highlight" style="margin-bottom:0.55rem; display:inline-block; font-size:0.85rem; padding:0.35rem 0.8rem;">APPRENTICESHIP</span>
+              <p style="font-size:1.18rem; line-height:1.45; margin:0;">Requires <strong>Functional Skills Maths &amp; English Level 2</strong> (or GCSE). Free 1-to-1 coaching gets you exam-ready at Unipart or from home.</p>
             </div>
           </div>
 
-          <div class="visual-frame pathway-zoomable" id="pathwayFrame" title="Click to expand role details" style="max-height:500px; cursor:zoom-in;">
-            <img id="pathwayImage" src="assets/images/nhs-care-numbers.jpg" alt="NHS healthcare staff collaborating over a digital tablet" style="max-height:500px; transition: opacity 0.25s ease;" />
+          <div class="visual-frame pathway-visual pathway-zoomable" id="pathwayFrame" title="Click to expand role details">
+            <img id="pathwayImage" src="assets/images/nhs-care-numbers.jpg" alt="NHS healthcare staff collaborating over a digital tablet" style="transition: opacity 0.25s ease;" />
             <div class="img-float-badge pos-tl">GCSE Grade C / 4 Equivalent</div>
             <div class="img-float-badge badge-dark pos-br">Unipart or Home Exams</div>
           </div>
+        </div>
+        <div class="pathway-expanded-hint" id="pathwayExpandedHint">
+          <span>Use ← / → to cycle roles · Click image or press Esc to return</span>
         </div>
       </div>
     </section>
@@ -475,7 +479,7 @@
 
         <div class="three-col">
           <!-- Card 1: National Numeracy QR -->
-          <div class="action-card">
+          <div class="action-card reveal-step">
             <div>
               <span class="pill pill-highlight" style="margin-bottom:0.65rem; display:inline-block;">1 · QUICK CHECK</span>
               <h3 style="font-size:1.5rem; margin-bottom:0.35rem;">National Numeracy Challenge</h3>
@@ -488,7 +492,7 @@
           </div>
 
           <!-- Card 2: Functional Skills Sign-Up -->
-          <div class="action-card">
+          <div class="action-card reveal-step">
             <div>
               <span class="pill pill-trial" style="margin-bottom:0.65rem; display:inline-block;">2 · 1-TO-1 TUTORING</span>
               <h3 style="font-size:1.5rem; margin-bottom:0.5rem;">Functional Skills Sign-Up</h3>
@@ -506,7 +510,7 @@
           </div>
 
           <!-- Card 3: Session Feedback QR -->
-          <div class="action-card">
+          <div class="action-card reveal-step">
             <div>
               <span class="pill" style="margin-bottom:0.65rem; display:inline-block;">3 · YOUR FEEDBACK</span>
               <h3 style="font-size:1.5rem; margin-bottom:0.35rem;">How Did We Do Today?</h3>
@@ -576,30 +580,6 @@
     </div>
   </div>
 
-  <!-- Career Pathway Spotlight Modal -->
-  <div class="spotlight-backdrop" id="pathwayBackdrop">
-    <div class="pathway-modal" id="pathwayModal">
-      <div class="pathway-modal-header">
-        <span class="eyebrow" id="pwModalEyebrow" style="margin:0; color:var(--nhs-blue);">CAREER GATEWAY · 1 OF 4</span>
-        <span class="pill pill-highlight" id="pwModalTag" style="font-size:0.85rem; padding:0.3rem 0.85rem;">APPRENTICESHIP</span>
-      </div>
-      <h3 id="pwModalTitle" class="pathway-modal-title">Nursing Associate</h3>
-      <div class="pathway-modal-img-wrap">
-        <img id="pwModalImg" src="" alt="" />
-      </div>
-      <div class="pathway-modal-body">
-        <p id="pwModalDesc" class="pathway-modal-desc"></p>
-        <div class="carousel-footer" style="margin-top:1.15rem;">
-          <div style="display:flex; gap:0.65rem;">
-            <button class="btn btn-ghost" id="pwPrevBtn">← Previous</button>
-            <button class="btn btn-primary" id="pwNextBtn">Next →</button>
-          </div>
-          <button class="btn btn-ghost" id="pwCloseBtn">Close (Esc)</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- HUD Controls -->
   <div class="hud">
     <button id="prevBtn" title="Previous (←)">←</button>
@@ -619,6 +599,6 @@
     <div class="overview-grid" id="overviewGrid"></div>
   </div>
 
-  <script src="app.js?v=8"></script>
+  <script src="app.js?v=9"></script>
 </body>
 </html>
