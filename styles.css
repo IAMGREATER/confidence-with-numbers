@@ -144,7 +144,7 @@ html, body {
 
 .theme-chalkboard {
   background: linear-gradient(rgba(10, 24, 18, 0.84), rgba(10, 24, 18, 0.90)),
-              url('assets/images/school-maths.jpg') center/cover no-repeat;
+              url('assets/images/school-maths.webp') center/cover no-repeat;
   color: var(--ink-light);
 }
 
@@ -345,7 +345,7 @@ h2.slide-title {
 .hero-fullbleed {
   background:
     linear-gradient(105deg, rgba(244, 241, 234, 0.96) 0%, rgba(244, 241, 234, 0.88) 48%, rgba(244, 241, 234, 0.35) 100%),
-    url('assets/images/hero-numeracy.jpg') center right/cover no-repeat !important;
+    url('assets/images/hero-numeracy.webp') center right/cover no-repeat !important;
 }
 
 .hero-collage {

@@ -507,25 +507,25 @@ It covers everyday NHS tech skills — from files and rotas to Outlook, Teams, a
   const anxietyData = {
     causes: [
       {
-        img: 'assets/images/cause-school.jpg',
+        img: 'assets/images/cause-school.webp',
         title: 'Negative School Experiences',
         desc: 'Being put on the spot at the front of the class or embarrassed in front of peers leaves a lasting emotional memory.',
         script: `[WHY IT HAPPENS · 1 OF 4 — NEGATIVE SCHOOL EXPERIENCES]\n"Many of us carry a memory of being called up to the whiteboard or put on the spot in front of the whole class.\n\nThat embarrassment sticks with you — even decades later, your brain remembers that feeling before you even look at the numbers."`
       },
       {
-        img: 'assets/images/cause-pressure.jpg',
+        img: 'assets/images/cause-pressure.webp',
         title: 'Time Pressure & Timed Tests',
         desc: 'Quick-fire times tables and ticking clocks trigger panic — even when you know how to do the maths calmly.',
         script: `[WHY IT HAPPENS · 2 OF 4 — TIME PRESSURE & TIMED TESTS]\n"At school, maths was often treated like a speed test — rapid-fire times tables and ticking clocks.\n\nWhen you feel rushed, your working memory freezes up, even when you actually know how to solve the problem calmly."`
       },
       {
-        img: 'assets/images/cause-label.jpg',
+        img: 'assets/images/cause-label.webp',
         title: 'Being Labelled “Not a Maths Person”',
         desc: 'Hearing from teachers, parents, or yourself that you just don’t have a “maths brain” creates a false ceiling.',
         script: `[WHY IT HAPPENS · 3 OF 4 — BEING LABELLED "NOT A MATHS PERSON"]\n"Maybe a teacher, a parent, or even you yourself said: 'I'm just not a maths person.'\n\nThere is no such thing as a 'maths brain' — that label just creates a false ceiling that stops people from trying."`
       },
       {
-        img: 'assets/images/cause-support.jpg',
+        img: 'assets/images/cause-support.webp',
         title: 'Lack of Support or Unrecognised Dyscalculia',
         desc: 'Without visual methods or dyslexia/dyscalculia-friendly guidance, numbers feel like a tangled knot.',
         script: `[WHY IT HAPPENS · 4 OF 4 — LACK OF SUPPORT / DYSCALCULIA]\n"If nobody ever showed you a visual way that fits how your brain works — especially if you have dyslexia or dyscalculia — numbers feel like a tangled knot.\n\nIt wasn't a lack of ability; it was a lack of the right support."`
@@ -533,25 +533,25 @@ It covers everyday NHS tech skills — from files and rotas to Outlook, Teams, a
     ],
     tips: [
       {
-        img: 'assets/images/tip-talk.jpg',
+        img: 'assets/images/tip-talk.webp',
         title: 'Talk Openly About How You Feel',
         desc: 'Naming maths anxiety breaks its power — you quickly discover that colleagues and clinicians feel the exact same way.',
         script: `[HOW WE BEAT IT · 1 OF 4 — TALK OPENLY]\n"The first step is simply naming it. When you say out loud 'numbers make me anxious', you quickly realise that colleagues, managers, and clinicians right beside you feel the exact same way."`
       },
       {
-        img: 'assets/images/tip-beliefs.jpg',
+        img: 'assets/images/tip-beliefs.webp',
         title: 'Challenge Old School Beliefs',
         desc: 'Adult learning is completely different from school. You bring years of real-world problem solving to the table.',
         script: `[HOW WE BEAT IT · 2 OF 4 — CHALLENGE OLD SCHOOL BELIEFS]\n"Adult learning is nothing like school. You already solve complex problems every single day on shift and at home — you just need methods that connect to real life."`
       },
       {
-        img: 'assets/images/tip-pace.jpg',
+        img: 'assets/images/tip-pace.webp',
         title: 'Drop the Clock & Comparisons',
         desc: 'No racing against others. At Oxford Health Skills for Life, you learn at your own calm pace in 1-to-1 sessions.',
         script: `[HOW WE BEAT IT · 3 OF 4 — DROP THE CLOCK & COMPARISONS]\n"In our 1-to-1 Functional Skills sessions, there's no classroom, no rushing, and no comparing yourself to anyone else. We go at your calm pace."`
       },
       {
-        img: 'assets/images/tip-goals.jpg',
+        img: 'assets/images/tip-goals.webp',
         title: 'Take Small, Realistic Steps Together',
         desc: 'Step-by-step visual methods turn intimidating problems into small, achievable wins that build real confidence.',
         script: `[HOW WE BEAT IT · 4 OF 4 — SMALL, REALISTIC STEPS]\n"We break big topics into small, visual steps. Every small win builds real confidence — and before you know it, things that felt impossible start clicking."`
@@ -631,7 +631,7 @@ It covers everyday NHS tech skills — from files and rotas to Outlook, Teams, a
       title: 'Nursing Associate',
       file: 'pathway_nursing_associate.json',
       tag: 'APPRENTICESHIP',
-      img: 'assets/images/nhs-care-numbers.jpg',
+      img: 'assets/images/nhs-care-numbers.webp',
       alt: 'NHS Nursing Associate colleagues collaborating over a tablet',
       desc: 'Requires <strong>Functional Skills Maths &amp; English Level 2</strong> (or GCSE). Free 1-to-1 coaching gets you exam-ready at Unipart or from home.',
       script: `[CAREER GATEWAY · NURSING ASSOCIATE]\n"If you're looking at the Nursing Associate Apprenticeship, you'll need Level 2 Maths and English (or GCSE).\n\nOur free 1-to-1 coaching fits around your shifts and gets you exam-ready — either at Unipart or from home."`
@@ -640,7 +640,7 @@ It covers everyday NHS tech skills — from files and rotas to Outlook, Teams, a
       title: 'Senior HCSW',
       file: 'pathway_senior_hcsw.json',
       tag: 'APPRENTICESHIP OR BAND 3–4 PROGRESSION',
-      img: 'assets/images/role-hcsw.jpg',
+      img: 'assets/images/role-hcsw.webp',
       alt: 'NHS Healthcare Support Worker with clipboard on a sunlit ward',
       desc: 'Via the <strong>Level 3 Senior HCSW Apprenticeship</strong> or direct Band 3/4 progression — Level 1–2 Maths &amp; English builds confidence with observations, fluid charts, and handovers.',
       script: `[CAREER GATEWAY · SENIOR HCSW]\n"For the Level 3 Senior HCSW Apprenticeship or Band 3/4 progression, Functional Skills Maths and English builds everyday confidence with observations, fluid balance charts, and written handovers."`
@@ -649,7 +649,7 @@ It covers everyday NHS tech skills — from files and rotas to Outlook, Teams, a
       title: 'Registered Nurse',
       file: 'pathway_registered_nurse.json',
       tag: 'DEGREE APPRENTICESHIP / UNIVERSITY',
-      img: 'assets/images/role-rn.jpg',
+      img: 'assets/images/role-rn.webp',
       alt: 'Registered Nurse reviewing digital chart at a nursing station',
       desc: 'Universities (like Oxford Brookes) require verified <strong>Level 2 Maths &amp; English</strong>. Start early with 1-to-1 coaching so application deadlines never catch you out.',
       script: `[CAREER GATEWAY · REGISTERED NURSE]\n"If your goal is the Registered Nurse Degree Apprenticeship or university like Oxford Brookes, they require verified Level 2 Maths and English.\n\nStarting early with 1-to-1 coaching means application deadlines never catch you out."`
@@ -658,7 +658,7 @@ It covers everyday NHS tech skills — from files and rotas to Outlook, Teams, a
       title: 'Admin & Team Lead',
       file: 'pathway_admin_and_digital.json',
       tag: 'CAREER PROGRESSION & APPRENTICESHIPS',
-      img: 'assets/images/role-admin.jpg',
+      img: 'assets/images/role-admin.webp',
       alt: 'NHS admin and team lead working at a sunlit desk with a laptop',
       desc: 'Supports <strong>Business Admin / Team Leader apprenticeships</strong> and internal promotion — combining Maths &amp; English with our <strong>Digital Functional Skills Trust Trial</strong>.',
       script: `[CAREER GATEWAY · ADMIN & TEAM LEAD]\n"For Business Admin, Team Leader apprenticeships, or internal promotion, we combine Maths and English with our brand-new Digital Functional Skills Trust Trial — covering Outlook, Teams, spreadsheets, and everyday NHS systems."`
